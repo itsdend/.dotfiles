@@ -24,18 +24,23 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
 	environment.shells = with pkgs; [ bash ];
-users.defaultUserShell = pkgs.bash;
+	users.defaultUserShell = pkgs.bash;
 
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.networks = {
+  	"t18_deco" = {
+	pskRaw = "0207f26b35fea9327883ab92ebec77974e9ae60afaa4c70bdf201944f0fe6253";
+	};
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = false;
 
   # Set your time zone.
   time.timeZone = "Europe/Zagreb";
@@ -123,6 +128,7 @@ environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electro
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
 cus_vivaldi
+	gcc
 	waybar
 	rofi-wayland
     wezterm
@@ -130,8 +136,20 @@ cus_vivaldi
     git
     wireplumber
     pa-notify
-networkmanagerapplet
+	networkmanagerapplet
+	lua-language-server
 	swww
+	libstdcxx5
+	nil
+	nodePackages_latest.bash-language-server
+	vscode-langservers-extracted
+	vim-language-server
+	dot-language-server
+	hyprpaper
+	hyprlock
+	hyprcursor
+	catppuccin-cursors.mochaRed
+	via
   ];
 
 fonts.packages = with pkgs; [

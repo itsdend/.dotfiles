@@ -9,7 +9,7 @@ let
   userDotfiles = {
     term = builtins.path { name = "terminal"; path = /home/marko/.dotfiles/termulator/wezterm; };
     hyprl = builtins.path { name = "hyperland"; path = /home/marko/.dotfiles/hyper; };
-    bsh = builtins.path { name = "hyperland"; path = /home/marko/.dotfiles/bash; };
+    status = builtins.path { name = "waybar"; path = /home/marko/.dotfiles/status/waybar; };
   };
 in
 {
@@ -17,6 +17,7 @@ in
   # manage.
   home.username = "marko";
   home.homeDirectory = "/home/marko";
+
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -36,9 +37,18 @@ in
     # # "Hello, world!" when run.
     # pkgs.hello
 
+neovim
 	lazygit
     wezterm
 	oh-my-posh
+	# lsps
+	erlang-ls
+	erlang_26
+	rebar3
+	luajitPackages.lua-lsp
+	elixir-ls
+	llvmPackages_18.clang-unwrapped
+
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -63,6 +73,10 @@ in
     # ".screenrc".source = dotfiles/screenrc;
       ".wezterm.lua".source = "${userDotfiles.term}/.wezterm.lua";
 	".config/hypr/hyprland.conf".source = "${userDotfiles.hyprl}/hyprland.conf";
+	".config/hypr/hyprpaper.conf".source = "${userDotfiles.hyprl}/hyprpaper.conf";
+	".config/hypr/hyprlock.conf".source = "${userDotfiles.hyprl}/hyprlock.conf";
+	".config/waybar/config".source = "${userDotfiles.hyprl}/config";
+	".config/waybar/style.css".source = "${userDotfiles.hyprl}/style.css";
 	# ".bashrc".source = "{userDotfiles.bsh}/.bachrc";
 
     # # You can also set the file content immediately.
