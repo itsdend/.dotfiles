@@ -9,6 +9,7 @@ let
   userDotfiles = {
     term = builtins.path { name = "terminal"; path = /home/marko/.dotfiles/termulator/wezterm; };
     hyprl = builtins.path { name = "hyperland"; path = /home/marko/.dotfiles/hyper; };
+    lsp = builtins.path { name = "lsp"; path = /home/marko/.dotfiles/lsp; };
     status = builtins.path { name = "waybar"; path = /home/marko/.dotfiles/status/waybar; };
   };
 in
@@ -75,8 +76,9 @@ neovim
 	".config/hypr/hyprland.conf".source = "${userDotfiles.hyprl}/hyprland.conf";
 	".config/hypr/hyprpaper.conf".source = "${userDotfiles.hyprl}/hyprpaper.conf";
 	".config/hypr/hyprlock.conf".source = "${userDotfiles.hyprl}/hyprlock.conf";
-	".config/waybar/config".source = "${userDotfiles.hyprl}/config";
-	".config/waybar/style.css".source = "${userDotfiles.hyprl}/style.css";
+	".config/waybar/config".source = "${userDotfiles.status}/config";
+	".config/waybar/style.css".source = "${userDotfiles.status}/style.css";
+	".config/erlang_ls/erlang_ls.config".source = "${userDotfiles.lsp}/erlang_ls.config";
 	# ".bashrc".source = "{userDotfiles.bsh}/.bachrc";
 
     # # You can also set the file content immediately.
