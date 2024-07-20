@@ -67,6 +67,7 @@ in
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.theme="catppuccin-mocha";
 
   # Configure keymap in X11
   services.xserver = {
@@ -127,7 +128,15 @@ environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electro
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-cus_vivaldi
+	cus_vivaldi(
+	catppuccin-sddm.override {
+	flavor = "mocha";
+	font = "ComicShannsMono Nerd Font";
+	fontSize = "15";
+	#customBackground = true;
+	background = "${./wallpapers/mks_color_ver2.png}";
+	loginBackground = false;
+	})
 	gcc
 	waybar
 	rofi-wayland
@@ -145,9 +154,11 @@ cus_vivaldi
 	nodePackages_latest.bash-language-server
 	vscode-langservers-extracted
 	vim-language-server
+	xsettingsd
 	dot-language-server
 	hyprpaper
 	hyprlock
+	kitty
 	hyprcursor
 	catppuccin-cursors.mochaRed
 	via

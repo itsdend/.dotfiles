@@ -106,11 +106,18 @@ neovim
   #
   #  /etc/profiles/per-user/marko/etc/profile.d/hm-session-vars.sh
   #
+  home.pointerCursor.gtk.enable = true;
+  home.pointerCursor.package = pkgs.catppuccin-cursors.mochaRed;
+  home.pointerCursor.size = 24;
+  home.pointerCursor.name = "catppuccin-mocha-red-cursors";
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
 
-programs.bash.bashrcExtra = "eval \"$(oh-my-posh init bash --config ~/.dotfiles/ohmyposh/larserikfinhold.omp.json)\"";
+programs.bash.bashrcExtra = "eval \"$(oh-my-posh init bash --config ~/.dotfiles/ohmyposh/larserikfinhold.omp.json)\"
+export XCURSOR_THEME=\"catppuccin-mocha-red-cursors\"
+";
+
 	programs.bash.enable = true;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
