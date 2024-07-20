@@ -141,6 +141,7 @@ cus_vivaldi
 	swww
 	libstdcxx5
 	nil
+	pavucontrol
 	nodePackages_latest.bash-language-server
 	vscode-langservers-extracted
 	vim-language-server
@@ -150,6 +151,11 @@ cus_vivaldi
 	hyprcursor
 	catppuccin-cursors.mochaRed
 	via
+	xclip
+	ripgrep
+	spotify
+	spicetify-cli
+
   ];
 
 fonts.packages = with pkgs; [

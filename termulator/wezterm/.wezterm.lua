@@ -58,11 +58,22 @@ config.keys = {
 		mods = 'CTRL',
 		action = wezterm.action.CloseCurrentPane {confirm = false}
 	},
-	{
-		key = 'm',
+	-- {
+	-- 	key = 'm',
+	-- 	mods = 'ALT',
+	-- 	action = wezterm.action{PaneSelect = {alphabet = 'hljkdfas'}}
+	-- },
+ 	{
+		key = '.',
 		mods = 'ALT',
-		action = wezterm.action{PaneSelect = {alphabet = 'hljkdfas'}}
+		action = wezterm.action.ActivatePaneDirection  'Right'
+	},
+ 	{
+		key = ',',
+		mods = 'ALT',
+		action = wezterm.action.ActivatePaneDirection  'Left'
 	}
+
 }
 
 -- fonts

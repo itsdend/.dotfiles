@@ -5,6 +5,8 @@
 #	path = /home/marko/.dotfiles/termulator/wezterm;
 #};
 #in 
+
+
 let
   userDotfiles = {
     term = builtins.path { name = "terminal"; path = /home/marko/.dotfiles/termulator/wezterm; };
@@ -44,8 +46,8 @@ neovim
 	oh-my-posh
 	# lsps
 	erlang-ls
-	erlang_26
-	rebar3
+	erlang_27
+	beam.packages.erlang_26.rebar3
 	luajitPackages.lua-lsp
 	elixir-ls
 	llvmPackages_18.clang-unwrapped
