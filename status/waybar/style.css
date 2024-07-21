@@ -7,6 +7,17 @@
 
 }
 
+#tooltip {
+	background-color: #24273a;
+	background: transparent;
+	color: #eb87b6
+}
+#tooltip * {
+	background-color: #24273a;
+	background: transparent;
+	color: #eb87b6
+}
+
 #waybar {
 	background-color: #24273a;
 	background: transparent;
@@ -34,6 +45,8 @@
 #mode,
 #idle_inhibitor,
 #window,
+#tooltip,
+#workspaces
 
 #cpu {
 	background-color: #7ac3ff;
