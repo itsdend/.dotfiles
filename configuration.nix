@@ -71,8 +71,8 @@ in
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -141,6 +141,7 @@ environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electro
 	waybar
 	rofi-wayland
     wezterm
+	neofetch
     wget
     git
     wireplumber
