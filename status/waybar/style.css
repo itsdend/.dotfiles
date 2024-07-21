@@ -2,40 +2,25 @@
 	font-size: 18px;
 	font-weight: bold;
 	font-family: 'ComicShannsMono Nerd Font';
+	padding: 0rem 1rem 0rem 1rem;
+	border-radius: 1rem 1rem 1rem 1rem;
 }
 
 #waybar {
 	background-color: #24273a;
 	background: transparent;
-	color: #eb87b6;
+	color: #24273a;
 }
 
-button {
-	box-shadow: inset 0 -3px transparent;
-	border: none;
-	border-radius: 0;
-	padding: 0 5px;
+#workspaces {
+	padding: 0rem 0rem 0rem 0rem;
+	background: #FC50B4;
 }
 
-#workspaces button {
-	background-color: #24273a;
-	color: #ffffff;
-}
 
 #workspaces button:hover {
-	background: rgba(0, 0, 0, 0.2);
-}
+	background: #FC50B4;
 
-#workspaces button.focused {
-	background-color: #285577;
-}
-
-#workspaces button.urgent {
-	background-color: #900000;
-}
-
-#workspaces button.active {
-	background-color: #285577;
 }
 
 #clock,
@@ -44,30 +29,39 @@ button {
 #memory,
 #pulseaudio,
 #tray,
+#network,
 #mode,
 #idle_inhibitor,
 #window,
 
-
-.modules-left>widget:first-child>#workspaces {
-	margin-left: 0;
+#cpu {
+	background-color: #7ac3ff;
 }
 
-
-.modules-right>widget:last-child>#workspaces {
-	margin-right: 0;
+#memory {
+	background-color: #D179EE;
 }
 
-@keyframes blink {
-	to {
-		background-color: #ffffff;
-		color: #000000;
-	}
+#pulseaudio {
+	background: #eb87b6;
+	padding: 0rem 0rem 0rem 1rem;
+	border-radius: 1rem 0rem 0rem 1rem;
+}
+
+#clock {
+	background: #eb87b6;
+	padding: 0rem 1rem 0rem 0rem;
+	border-radius: 0rem 1rem 1rem 0rem;
+}
+
+#battery {
+	background-color: #4FC8B7;
+	padding: 0rem 0rem 0rem 1rem;
+	border-radius: 1rem 0rem 0rem 1rem;
 }
 
 #battery.critical:not(.charging) {
 	background-color: #f53c3c;
-	color: #ffffff;
 	animation-name: blink;
 	animation-duration: 0.5s;
 	animation-timing-function: linear;
@@ -75,25 +69,22 @@ button {
 	animation-direction: alternate;
 }
 
-label:focus {
-	background-color: #000000;
+
+#battery.charging {
+	background-color: #4FC8B7;
 }
 
-#tray>.passive {
-	-gtk-icon-effect: dim;
+#battery.warning:not(.charging) {
+	background-color: #FC50B4;
 }
 
-#tray>.needs-attention {
-	-gtk-icon-effect: highlight;
-	background-color: #eb4d4b;
+#network {
+	background-color: #4FC8B7;
+	padding: 0rem 1rem 0rem 0rem;
+	border-radius: 0rem 1rem 1rem 0rem;
 }
 
-#idle_inhibitor {
-	font-size: 15px;
-	background-color: #333333;
-	padding: 5px;
-}
-
-#idle_inhibitor.activated {
-	background-color: #285577;
+#tray {
+	margin-right: 1rem;
+	border-radius: 1rem;
 }
