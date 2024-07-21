@@ -1,6 +1,7 @@
 {
   "layer": "bottom",
   "position": "top",
+  "margin-top": 10,
   "height": 24,
   "modules-left": ["cpu","memory",],
   "modules-center": ["pulseaudio","clock"],
