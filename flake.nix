@@ -7,9 +7,10 @@
       };
 	home-manager.url = "github:nix-community/home-manager/release-24.05";
 	home-manager.inputs.nixpkgs.follows = "nixpkgs";
+	spicetify-nix.url = "github:the-argus/spicetify-nix";
    };
 
-   outputs = { self, nixpkgs, home-manager, ... }:
+   outputs = { self, nixpkgs, home-manager,spicetify-nix, ... }:
      let lib = nixpkgs.lib;
 	system = "x86_64-linux";
 	pkgs = nixpkgs.legacyPackages.${system};
@@ -18,13 +19,18 @@
       nixosConfigurations = {
           nixos = lib.nixosSystem {
              inherit system;
-             modules = [ ./configuration.nix ];
+             modules = [ ./configuration.nix
+			 ];
           };
       };
  	homeConfigurations = {
 		marko = home-manager.lib.homeManagerConfiguration {
 		inherit pkgs;
-		modules = [./home.nix];
+		extraSpecialArgs = {inherit spicetify-nix;};
+		modules = [
+			./home.nix
+			./spicetify.nix
+			];
 		};
 	};
    };

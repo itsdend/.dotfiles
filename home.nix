@@ -7,15 +7,16 @@
 #in 
 
 
-let
-  userDotfiles = {
-    term = builtins.path { name = "terminal"; path = /home/marko/.dotfiles/termulator/wezterm; };
-    hyprl = builtins.path { name = "hyperland"; path = /home/marko/.dotfiles/hyper; };
-    lsp = builtins.path { name = "lsp"; path = /home/marko/.dotfiles/lsp; };
-    status = builtins.path { name = "waybar"; path = /home/marko/.dotfiles/status/waybar; };
-  };
-in
+#let
+ # userDotfiles = {
+  #  term = builtins.path { name = "terminal"; path = /home/marko/.dotfiles/termulator/wezterm; };
+   # hyprl = builtins.path { name = "hyperland"; path = /home/marko/.dotfiles/hyper; };
+    #lsp = builtins.path { name = "lsp"; path = /home/marko/.dotfiles/lsp; };
+ #   status = builtins.path { name = "waybar"; path = /home/marko/.dotfiles/status/waybar; };
+ # };
+#in
 {
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "marko";
@@ -40,6 +41,7 @@ in
     # # "Hello, world!" when run.
     # pkgs.hello
 
+
 neovim
 	lazygit
     wezterm
@@ -51,7 +53,7 @@ neovim
 	luajitPackages.lua-lsp
 	elixir-ls
 	llvmPackages_18.clang-unwrapped
-
+	spicetify-cli
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -74,13 +76,13 @@ neovim
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-      ".wezterm.lua".source = "${userDotfiles.term}/.wezterm.lua";
-	".config/hypr/hyprland.conf".source = "${userDotfiles.hyprl}/hyprland.conf";
-	".config/hypr/hyprpaper.conf".source = "${userDotfiles.hyprl}/hyprpaper.conf";
-	".config/hypr/hyprlock.conf".source = "${userDotfiles.hyprl}/hyprlock.conf";
-	".config/waybar/config".source = "${userDotfiles.status}/config";
-	".config/waybar/style.css".source = "${userDotfiles.status}/style.css";
-	".config/erlang_ls/erlang_ls.config".source = "${userDotfiles.lsp}/erlang_ls.config";
+    ".wezterm.lua".source = "${./termulator/wezterm/.wezterm.lua}";
+	".config/hypr/hyprland.conf".source = "${./hyper/hyprland.conf}";
+	".config/hypr/hyprpaper.conf".source = "${./hyper/hyprpaper.conf}";
+	".config/hypr/hyprlock.conf".source = "${./hyper/hyprlock.conf}";
+	".config/waybar/config".source = "${./status/waybar/config}";
+	".config/waybar/style.css".source = "${./status/waybar/style.css}";
+	".config/erlang_ls/erlang_ls.config".source = "${./lsp/erlang_ls.config}";
 	# ".bashrc".source = "{userDotfiles.bsh}/.bachrc";
 
     # # You can also set the file content immediately.

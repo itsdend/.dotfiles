@@ -1,6 +1,8 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
 
+--hello
+
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 

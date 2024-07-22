@@ -165,8 +165,6 @@ environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electro
 	via
 	xclip
 	ripgrep
-	spotify
-	spicetify-cli
 
   ];
 
