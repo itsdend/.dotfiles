@@ -77,6 +77,7 @@ neovim
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
     ".wezterm.lua".source = "${./termulator/wezterm/.wezterm.lua}";
+    ".config/rofi/config.rasi".source = "${./rofi_run/config.rasi}";
 	".config/hypr/hyprland.conf".source = "${./hyper/hyprland.conf}";
 	".config/hypr/hyprpaper.conf".source = "${./hyper/hyprpaper.conf}";
 	".config/hypr/hyprlock.conf".source = "${./hyper/hyprlock.conf}";
