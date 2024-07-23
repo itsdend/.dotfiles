@@ -152,6 +152,7 @@ in
 		libstdcxx5
 		nil
 		pavucontrol
+		playerctl
 		nodePackages_latest.bash-language-server
 		vscode-langservers-extracted
 		vim-language-server

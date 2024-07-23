@@ -30,6 +30,7 @@
 # lsps
 		erlang-ls
 		erlang_27
+		unixODBC
 		beam.packages.erlang_26.rebar3
 		luajitPackages.lua-lsp
 		elixir-ls
@@ -96,6 +97,28 @@
 	home.pointerCursor.name = "catppuccin-mocha-red-cursors";
 	home.sessionVariables = {
 # EDITOR = "emacs";
+	};
+	gtk = {
+		enable = true;
+		gtk3.extraConfig = {
+				gtk-application-prefer-dark-theme=1;
+					gtk-decoration-layout=icon:minimize,maximize,close;
+					};
+		gtk4.extraConfig = {
+				gtk-application-prefer-dark-theme=1;
+					gtk-decoration-layout=icon:minimize,maximize,close;
+					};
+		
+		gtk2.extraConfig = 
+				"gtk-application-prefer-dark-theme=1
+					gtk-decoration-layout = icon:minimize,maximize,close";
+		font = {
+			name = "ComicShannsMono Nerd Font bold 15";
+		};
+		iconTheme = {
+			package = (pkgs.catppuccin-papirus-folders.override { flavor = "mocha"; accent = "peach"; });
+			name  = "Papirus-Dark";
+		};
 	};
 
 	programs.bash.bashrcExtra = "eval \"$(oh-my-posh init bash --config ~/.dotfiles/ohmyposh/larserikfinhold.omp.json)\"
