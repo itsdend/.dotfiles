@@ -153,6 +153,8 @@ in
 		nil
 		pavucontrol
 		playerctl
+		nodejs_22
+		corepack_22
 		nodePackages_latest.bash-language-server
 		vscode-langservers-extracted
 		vim-language-server
