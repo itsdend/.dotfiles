@@ -60,11 +60,11 @@ config.keys = {
 		mods = 'CTRL',
 		action = wezterm.action.CloseCurrentPane {confirm = false}
 	},
-	-- {
-	-- 	key = 'm',
-	-- 	mods = 'ALT',
-	-- 	action = wezterm.action{PaneSelect = {alphabet = 'hljkdfas'}}
-	-- },
+	 {
+	 	key = 'm',
+	 	mods = 'CTRL',
+	 	action = wezterm.action{PaneSelect = {alphabet = 'hljkdfas'}}
+	 },
  	{
 		key = '.',
 		mods = 'ALT',
