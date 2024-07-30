@@ -168,6 +168,7 @@ in
 		via
 		xclip
 		ripgrep
+		thunderbird
 		];
 
 	fonts.packages = with pkgs; [
