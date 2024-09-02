@@ -10,7 +10,7 @@
 		spicetify-nix.url = "github:the-argus/spicetify-nix";
 	};
 
-	outputs = { self, nixpkgs, home-manager,spicetify-nix, ... }:
+	outputs = { self, nixpkgs, home-manager,spicetify-nix,ngrok, ... }:
 		let lib = nixpkgs.lib;
 	system = "x86_64-linux";
 	pkgs = nixpkgs.legacyPackages.${system};
@@ -19,7 +19,8 @@
 		nixosConfigurations = {
 			nixos = lib.nixosSystem {
 				inherit system;
-				modules = [ ./configuration.nix
+				modules = [ 
+					./configuration.nix
 				];
 			};
 		};

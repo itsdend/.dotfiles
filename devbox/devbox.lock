@@ -1,0 +1,53 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "ngrok@latest": {
+      "last_modified": "2024-08-14T11:41:26Z",
+      "resolved": "github:NixOS/nixpkgs/0cb2fd7c59fed0cd82ef858cbcbdb552b9a33465#ngrok",
+      "source": "devbox-search",
+      "version": "3.14.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/dx58zflgg82r4aw9kz1nqca96vzqhn3h-ngrok-3.14.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/dx58zflgg82r4aw9kz1nqca96vzqhn3h-ngrok-3.14.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/j7fdp3f6km1l3jcbyg47yz8y70rv98d4-ngrok-3.14.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/j7fdp3f6km1l3jcbyg47yz8y70rv98d4-ngrok-3.14.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/gqdm8j7qxkdzbdcjjy2qgww2bkg2lnc4-ngrok-3.14.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/gqdm8j7qxkdzbdcjjy2qgww2bkg2lnc4-ngrok-3.14.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/6n7x26mklykr66iyrpdn4ms2gh8j4r5r-ngrok-3.14.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/6n7x26mklykr66iyrpdn4ms2gh8j4r5r-ngrok-3.14.0"
+        }
+      }
+    }
+  }
+}
