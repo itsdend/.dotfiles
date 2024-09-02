@@ -10,6 +10,10 @@ cus_vivaldi = pkgs.vivaldi.overrideAttrs (oldAttrs: {
 		dontPatchELF = true;
 		nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ pkgs.kdePackages.wrapQtAppsHook ];
 		});
+		ngrok = builtins.fetchGit{
+			url =  "https://github.com/ngrok/ngrok-nix";
+			rev = "c56189898f263153a2a16775ea2b871084a4efb0";
+		};
 
 in
 
@@ -17,7 +21,18 @@ in
 	imports =
 		[ # Include the results of the hardware scan.
 		./hardware-configuration.nix
+		"${ngrok}/nixos.nix"
 		];
+		services.ngrok = {
+			enable = true;
+			extraConfig = {};
+			extraConfigFiles = [
+
+			];
+			tunnels = {
+
+			};
+		};
 
 # Bootloader.
 	boot.loader.systemd-boot.enable = true;
@@ -104,7 +119,6 @@ in
 		extraGroups = [ "networkmanager" "wheel" ];
 		packages = with pkgs; [
 			kdePackages.kate
-#  thunderbird
 		];
 	};
 
@@ -128,8 +142,8 @@ in
 # $ nix search wget
 	environment.systemPackages = with pkgs; [
 		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-		cus_vivaldi(
-				catppuccin-sddm.override {
+		cus_vivaldi
+		(catppuccin-sddm.override {
 				flavor = "mocha";
 				font = "ComicShannsMono Nerd Font";
 				fontSize = "15";
@@ -167,8 +181,8 @@ in
 		catppuccin-cursors.mochaRed
 		via
 		xclip
+		thunderbird-unwrapped
 		ripgrep
-		thunderbird
 		];
 
 	fonts.packages = with pkgs; [
@@ -212,4 +226,5 @@ in
 
 	nix.settings.experimental-features = [ "nix-command" "flakes"];
 
+	services.flatpak.enable = true;
 }

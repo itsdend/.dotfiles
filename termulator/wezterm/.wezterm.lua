@@ -44,25 +44,26 @@ config.colors = {
 	}
 }
 
+config.leader = { key = 'm', mods = 'CTRL'}
 config.keys = {
 	{
 		key = 'v',
-		mods = 'CTRL',
+		mods = 'LEADER',
 		action = wezterm.action.SplitVertical {domain = 'CurrentPaneDomain'}
 	},
 	{
 		key = 's',
-		mods = 'CTRL',
+		mods = 'LEADER',
 		action = wezterm.action.SplitHorizontal {domain = 'CurrentPaneDomain'}
 	},
 	{
 		key = 'w',
-		mods = 'CTRL',
+		mods = 'LEADER',
 		action = wezterm.action.CloseCurrentPane {confirm = false}
 	},
 	 {
-	 	key = 'm',
-	 	mods = 'CTRL',
+	 	key = '/',
+	 	mods = 'LEADER',
 	 	action = wezterm.action{PaneSelect = {alphabet = 'hljkdfas'}}
 	 },
  	{
@@ -74,7 +75,48 @@ config.keys = {
 		key = ',',
 		mods = 'ALT',
 		action = wezterm.action.ActivatePaneDirection  'Left'
+	},
+ 	{
+		key = 'u',
+		mods = 'LEADER',
+		action = wezterm.action.ScrollByPage(-0.5)
+	},
+ 	{
+		key = 'd',
+		mods = 'LEADER',
+		action = wezterm.action.ScrollByPage(0.5)
+	},
+ 	{
+		key = 'g',
+		mods = 'LEADER',
+		action = wezterm.action.ScrollToBottom
+	},
+ 	{
+		key = 'i',
+		mods = 'LEADER',
+		action = wezterm.action.ScrollToPrompt(-1)
+	},
+ 	{
+		key = 'a',
+		mods = 'LEADER',
+		action = wezterm.action.ScrollToPrompt(1)
+	},
+ 	{
+		key = 'j',
+		mods = 'LEADER',
+		action = wezterm.action.ScrollByLine(1)
+	},
+ 	{
+		key = 'k',
+		mods = 'LEADER',
+		action = wezterm.action.ScrollByLine(-1)
+	},
+	{
+		key = 'q',
+		mods = 'LEADER',
+		action = wezterm.action.ActivateCopyMode
 	}
+
 
 }
 
