@@ -180,7 +180,9 @@ in
 	services.dbus.enable = true;
 
 	services.xserver.videoDrivers = ["intel"];
-	hardware.opengl.enable = true;
+	hardware.opengl = {
+		enable = true;
+	};
 #services.xserver.displayManager.lightdm.enable = true;
 
 
@@ -213,5 +215,6 @@ in
 
 	nix.settings.experimental-features = [ "nix-command" "flakes"];
 
+	services.logind.lidSwitch = "ignore";
 	services.flatpak.enable = true;
 }
