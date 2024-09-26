@@ -34,7 +34,11 @@
 		beam.packages.erlang_26.rebar3
 		luajitPackages.lua-lsp
 		elixir-ls
-		llvmPackages_18.clang-unwrapped
+		#llvmPackages_18.clang-unwrapped
+		clang-tools
+		clang
+		cmake
+		boost
 		spicetify-cli
 
 # # It is sometimes useful to fine-tune packages, for example, by applying
