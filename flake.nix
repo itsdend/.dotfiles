@@ -8,10 +8,10 @@
 		nixpkgs-unstable.url = "github:NixOs/nixpkgs/nixos-unstable";
 		home-manager.url = "github:nix-community/home-manager/release-24.05";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
-#		spicetify-nix.url = "github:the-argus/spicetify-nix";
+		spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 	};
 
-	outputs = { self, nixpkgs, nixpkgs-unstable,home-manager,... }:
+	outputs = { self, nixpkgs, nixpkgs-unstable,home-manager,spicetify-nix,... }:
 		let
 			lib = nixpkgs.lib;
 			system = "x86_64-linux";
@@ -34,10 +34,10 @@
 		homeConfigurations = {
 			marko = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
-				#extraSpecialArgs = {inherit spicetify-nix;};
+				extraSpecialArgs = {inherit spicetify-nix;};
 				modules = [
 					./home.nix
-#						./spicetify.nix
+					./spicetify.nix
 				];
 			};
 		};
