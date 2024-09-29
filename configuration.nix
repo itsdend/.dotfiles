@@ -2,9 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgsUnstable,... }:
 
 let
+  # Import the unstable nixos channel
+
 cus_vivaldi = pkgs.vivaldi.overrideAttrs (oldAttrs: {
 		dontWrapQtApps = false;
 		dontPatchELF = true;
@@ -122,8 +124,9 @@ in
 	environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
 
 # Allow unfree packages
-	nixpkgs.config.allowUnfree = true;
-
+	nixpkgs.config = {
+		allowUnfree = true;
+	};
 # List packages installed in system profile. To search, run:
 # $ nix search wget
 	environment.systemPackages = with pkgs; [
@@ -170,6 +173,12 @@ in
 		thunderbird-unwrapped
 		ripgrep
 		devbox
+
+		# unstalbe and lsp
+		nixpkgsUnstable.erlang-ls
+		nixpkgsUnstable.erlang_27
+		nixpkgsUnstable.beam.packages.erlang_27.rebar3
+		nixpkgsUnstable.elixir-ls
 		];
 
 	fonts.packages = with pkgs; [

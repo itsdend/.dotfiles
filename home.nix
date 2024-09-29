@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
+ {
 
-{
 
 # Home Manager needs a bit of information about you and the paths it should
 # manage.
@@ -28,18 +28,14 @@
 		wezterm
 		oh-my-posh
 # lsps
-		erlang-ls
-		erlang_27
 		unixODBC
-		beam.packages.erlang_26.rebar3
 		luajitPackages.lua-lsp
-		elixir-ls
 		#llvmPackages_18.clang-unwrapped
 		clang-tools
 		clang
 		cmake
 		boost
-		spicetify-cli
+		#spicetify-cli
 
 # # It is sometimes useful to fine-tune packages, for example, by applying
 # # overrides. You can do that directly here, just don't forget the
