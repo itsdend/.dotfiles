@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, nixpkgsUnstable,... }:
+{ config, pkgs, ... }:
 
 let
   # Import the unstable nixos channel
@@ -175,10 +175,10 @@ in
 		devbox
 
 		# unstalbe and lsp
-		nixpkgsUnstable.erlang-ls
-		nixpkgsUnstable.erlang_27
-		nixpkgsUnstable.beam.packages.erlang_27.rebar3
-		nixpkgsUnstable.elixir-ls
+#		nixpkgsUnstable.erlang-ls
+#		nixpkgsUnstable.erlang_27
+#		nixpkgsUnstable.beam.packages.erlang_27.rebar3
+#		nixpkgsUnstable.elixir-ls
 		];
 
 	fonts.packages = with pkgs; [

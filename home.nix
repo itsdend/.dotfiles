@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs,nixpkgsUnstable, ... }:
  {
 
 
@@ -36,6 +36,10 @@
 		cmake
 		boost
 		spicetify-cli
+		#nixpkgsUnstable.erlang-ls this is for now installed manually because the current version is behind erlang 27
+		nixpkgsUnstable.erlang_27
+		nixpkgsUnstable.beam.packages.erlang_27.rebar3
+		nixpkgsUnstable.elixir-ls
 
 # # It is sometimes useful to fine-tune packages, for example, by applying
 # # overrides. You can do that directly here, just don't forget the
@@ -123,6 +127,8 @@
 
 	programs.bash.bashrcExtra = "eval \"$(oh-my-posh init bash --config ~/.dotfiles/ohmyposh/larserikfinhold.omp.json)\"
 		export XCURSOR_THEME=\"catppuccin-mocha-red-cursors\"
+		export PATH=\"$HOME/LSP/bin:$PATH\"
+
 		";
 
 	programs.bash.enable = true;

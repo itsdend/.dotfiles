@@ -20,12 +20,8 @@
 			nixosConfigurations = {
 				nixos = lib.nixosSystem {
 					inherit system;
-					specialArgs = {
-						nixpkgsUnstable = import nixpkgs-unstable{
-							inherit system;
-							config.allofUnfree = true;
-						};
-					};
+				#	specialArgs = {
+				#	};
 					modules = [ 
 						./configuration.nix
 					];
@@ -34,7 +30,12 @@
 		homeConfigurations = {
 			marko = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
-				extraSpecialArgs = {inherit spicetify-nix;};
+				extraSpecialArgs = {inherit spicetify-nix;
+						nixpkgsUnstable = import nixpkgs-unstable{
+							inherit system;
+							config.allofUnfree = true;
+						};
+				};
 				modules = [
 					./home.nix
 					./spicetify.nix
