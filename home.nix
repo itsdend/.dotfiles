@@ -127,9 +127,14 @@
 
 	programs.bash.bashrcExtra = "eval \"$(oh-my-posh init bash --config ~/.dotfiles/ohmyposh/larserikfinhold.omp.json)\"
 		export XCURSOR_THEME=\"catppuccin-mocha-red-cursors\"
-		export PATH=\"$HOME/LSP/bin:$PATH\"
+		export PATH=\"$PATH:$HOME/Projects/open-source/nixpkgs/result/bin\"
 
 		";
+		# TODO nixpkgs/result/bin is used for erlang_ls 1.0.0, when that version come live delete line 130
+
+   	#export PATH=\"$HOME/nix/store/v6fmqcz4y2vpykiym0igd7n81g1bmxyz-erlang-ls-1.0.0/bin:$PATH\"
+		# add this in bash for git built erlang_ls
+	#export PATH=\"$HOME/LSP/bin:$PATH\"
 
 	programs.bash.enable = true;
 # Let Home Manager install and manage itself.
