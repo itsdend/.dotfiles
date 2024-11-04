@@ -97,6 +97,15 @@ in
 #media-session.enable = true;
 	};
 
+  # Bluetooth Stuff
+  services.blueman.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    package = pkgs.bluez;
+    settings.general = {
+      enable = "Source,Sink,Media,Socket";
+    };
+  };
 # Enable touchpad support (enabled default in most desktopManager).
 # services.xserver.libinput.enable = true;
 
@@ -104,11 +113,13 @@ in
 	users.users.marko = {
 		isNormalUser = true;
 		description = "marko";
-		extraGroups = [ "networkmanager" "wheel" ];
+		extraGroups = [ "networkmanager" "wheel" "wireshark" ];
 		packages = with pkgs; [
 			kdePackages.kate
 		];
 	};
+	programs.wireshark.enable = true;
+	
 
 # Install firefox.
 	programs.firefox.enable = true;
@@ -173,6 +184,8 @@ in
 		thunderbird-unwrapped
 		ripgrep
 		devbox
+
+		wireshark
 
 		# unstalbe and lsp
 #		nixpkgsUnstable.erlang-ls

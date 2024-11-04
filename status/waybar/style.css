@@ -29,7 +29,6 @@
 	background: #FC50B4;
 }
 
-
 #workspaces button:hover {
 	background: #FC50B4;
 
@@ -72,6 +71,11 @@
 	background-color: #4FC8B7;
 	padding: 0rem 0rem 0rem 1rem;
 	border-radius: 1rem 0rem 0rem 1rem;
+}
+#bluetooth { 
+	background-color: #4FC8B7;
+	padding: 0rem 0rem 0rem 1rem;
+	border-radius: 0rem 0rem 0rem 0rem;
 }
 
 #battery.critical:not(.charging) {

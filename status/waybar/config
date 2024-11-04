@@ -5,7 +5,7 @@
   "height": 24,
   "modules-left": ["cpu","memory",],
   "modules-center": ["pulseaudio","clock"],
-  "modules-right": ["battery","network", "hyprland/workspaces"],
+  "modules-right": ["battery","bluetooth","network", "hyprland/workspaces"],
   "cpu": { 
     "interval": 10, 
     "format": "󰻠 {usage}%" 
@@ -46,11 +46,18 @@
     "on-click-right": "pavucontrol",
     "format-muted": "󰖁 {volume}%"
   },
+  "bluetooth": {
+	"on-click": "blueman-manager",
+	"format-on": "󰂯 ",
+	"format-off": "󰂲 ",
+	"format-connected": "󰂯 {device_alias}",
+	"format-disabled": "󰂲 "
+  },
   "network": {
     "format": "{ifname}",
     "format-wifi": "  {signalStrength}% {essid}",
     "format-disconnected": "󰤯", //An empty format will hide the module.
-    "on-click-right": "nm-connection-editor",
+    "on-click-right": "nm-connection-editor"
 },
 "hyprland/workspaces": {
 "active-only": true,
