@@ -70,6 +70,7 @@
 		".config/waybar/config".source = "${./status/waybar/config}";
 		".config/waybar/style.css".source = "${./status/waybar/style.css}";
 		".config/erlang_ls/erlang_ls.config".source = "${./lsp/erlang_ls.config}";
+		".config/xsettingsd/xsettingsd.conf".source = "${./xda_apps/xsettingsd.conf}";
 # ".bashrc".source = "{userDotfiles.bsh}/.bachrc";
 
 # # You can also set the file content immediately.
