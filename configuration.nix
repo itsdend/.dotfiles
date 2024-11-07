@@ -2,16 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs,wezterm, ... }:
 
 let
   # Import the unstable nixos channel
 
-cus_vivaldi = pkgs.vivaldi.overrideAttrs (oldAttrs: {
-		dontWrapQtApps = false;
-		dontPatchELF = true;
-		nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ pkgs.kdePackages.wrapQtAppsHook ];
-		});
+#cus_vivaldi = pkgs.vivaldi.overrideAttrs (oldAttrs: {
+	#	dontWrapQtApps = false;
+	#dontPatchELF = true;
+	#	nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ pkgs.kdePackages.wrapQtAppsHook ];
+	#	});
 
 in
 
@@ -142,7 +142,17 @@ in
 # $ nix search wget
 	environment.systemPackages = with pkgs; [
 		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-		cus_vivaldi
+		#cus_vivaldi
+	#	(vivaldi.overrideAttrs (oldAttrs: {
+    #  buildInputs = (oldAttrs.buildInputs or []) ++ [
+    #    pkgs.libsForQt5.qtwayland
+    #    pkgs.libsForQt5.qtx11extras
+    #    pkgs.kdePackages.plasma-integration.qt5
+    #    pkgs.kdePackages.kio-extras-kf5
+    #    pkgs.kdePackages.breeze.qt5
+    #  ];
+    #}))
+	vivaldi
 		(catppuccin-sddm.override {
 				flavor = "mocha";
 				font = "ComicShannsMono Nerd Font";
@@ -154,7 +164,8 @@ in
   		gcc
 		waybar
 		rofi-wayland
-		wezterm
+		#wezterm
+		wezterm.packages.${pkgs.system}.default
 		neofetch
 		wget
 		git
@@ -201,7 +212,7 @@ in
 #networking.networkmanager.enable.true;
 	services.dbus.enable = true;
 
-	services.xserver.videoDrivers = ["intel"];
+	services.xserver.videoDrivers = ["amdgpu"];
 	hardware.opengl = {
 		enable = true;
 	};

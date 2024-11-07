@@ -1,4 +1,4 @@
-{ config, pkgs,nixpkgsUnstable, ... }:
+{ config, pkgs,nixpkgsUnstable,nixpkgsMaster, ... }:
  {
 
 
@@ -37,9 +37,10 @@
 		boost
 		spicetify-cli
 		#nixpkgsUnstable.erlang-ls this is for now installed manually because the current version is behind erlang 27
+		nixpkgsMaster.beam.packages.erlang_27.erlang-ls
 		nixpkgsUnstable.erlang_27
 		nixpkgsUnstable.beam.packages.erlang_27.rebar3
-		nixpkgsUnstable.elixir-ls
+		#nixpkgsUnstable.elixir-ls
 
 # # It is sometimes useful to fine-tune packages, for example, by applying
 # # overrides. You can do that directly here, just don't forget the
@@ -70,7 +71,7 @@
 		".config/waybar/config".source = "${./status/waybar/config}";
 		".config/waybar/style.css".source = "${./status/waybar/style.css}";
 		".config/erlang_ls/erlang_ls.config".source = "${./lsp/erlang_ls.config}";
-		".config/xsettingsd/xsettingsd.conf".source = "${./xda_apps/xsettingsd.conf}";
+#		".config/xsettingsd/xsettingsd.conf".source = "${./xda_apps/xsettingsd.conf}";
 # ".bashrc".source = "{userDotfiles.bsh}/.bachrc";
 
 # # You can also set the file content immediately.
@@ -116,7 +117,7 @@
 		
 		gtk2.extraConfig = 
 				"gtk-application-prefer-dark-theme=1
-					gtk-decoration-layout = icon:minimize,maximize,close";
+gtk-decoration-layout = icon:minimize,maximize,close";
 		font = {
 			name = "ComicShannsMono Nerd Font bold 15";
 		};
@@ -128,7 +129,7 @@
 
 	programs.bash.bashrcExtra = "eval \"$(oh-my-posh init bash --config ~/.dotfiles/ohmyposh/larserikfinhold.omp.json)\"
 		export XCURSOR_THEME=\"catppuccin-mocha-red-cursors\"
-		export PATH=\"$PATH:$HOME/Projects/open-source/nixpkgs/result/bin\"
+		export PATH=\"$PATH:$HOME/projects/open-source/nixpkgs/result/bin\"
 
 		";
 		# TODO nixpkgs/result/bin is used for erlang_ls 1.0.0, when that version come live delete line 130
