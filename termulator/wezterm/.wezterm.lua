@@ -6,11 +6,11 @@ local wezterm = require 'wezterm'
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
-config.enable_wayland = false,
+config.enable_wayland = false
 
 	-- colors
 
-	wezterm.gui.enumerate_gpus()
+wezterm.gui.enumerate_gpus()
 config.window_background_opacity = 0.9
 -- This is where you actually apply your config choices
 config.colors = {
@@ -44,6 +44,7 @@ config.colors = {
 	}
 }
 
+config.max_fps = 180
 config.leader = { key = 'm', mods = 'CTRL' }
 config.keys = {
 	{
