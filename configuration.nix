@@ -152,6 +152,7 @@ in
     #    pkgs.kdePackages.breeze.qt5
     #  ];
     #}))
+	hyprpanel
 	vivaldi
 		(catppuccin-sddm.override {
 				flavor = "mocha";

@@ -1,76 +1,73 @@
 {
-  "layer": "bottom",
-  "position": "top",
-  "margin-top": 10,
-  "height": 24,
-  "modules-left": ["cpu","memory",],
-  "modules-center": ["pulseaudio","clock"],
-  "modules-right": ["battery","bluetooth","network", "hyprland/workspaces"],
-  "cpu": { 
-    "interval": 10, 
-    "format": "󰻠 {usage}%" 
-  },
-  "memory": {
-    "interval": 30,
-    "format": "  {percentage}% 󰓡 {swapPercentage}%"
-  },
-  "battery": {
-    "bat": "BAT0",
-	"spacing": 0,
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 5
-    },
-    "format": " {capacity}%",
-    "format-charging": " {capacity}% (charging)",
-    "format-plugged": " {capacity}% (plugged)",
-  },
-  "clock": {
-    "format": " 󰐝 {:%H:%M}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "calendar": {
-      "format": {
-        "months": "<span color='#D179EE'><b>{}</b></span>",
-        "today": "<span color='#7ac3ff'><b>{}</b></span>",
-        "days": "<span color='#eb87b6'><b>{}</b></span>"
-      }
-    }
-  },
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-icons": {
-      "default": ["󰕿", "󰖀", "󰕾"]
-    },
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-right": "pavucontrol",
-    "format-muted": "󰖁 {volume}%"
-  },
-  "bluetooth": {
-	"on-click": "blueman-manager",
-	"format-on": "󰂯 ",
-	"format-off": "󰂲 ",
-	"format-connected": "󰂯 {device_alias}",
-	"format-disabled": "󰂲 "
-  },
-  "network": {
-    "format": "{ifname}",
-    "format-wifi": "  {signalStrength}% {essid}",
-    "format-disconnected": "󰤯", //An empty format will hide the module.
-    "on-click-right": "nm-connection-editor"
-},
-"hyprland/workspaces": {
-"active-only": true,
-"format": "{icon}",
-	"format-icons": {
-		"1": "󰣘",
-		"2": "󰣙",
-		"3": "",
-		"4": "",
-		"default": "󰻀"
-	},},
-"tray": {
-    "icon-size": 20,
-    "spacing": 10
-  },
+	"layer": "bottom",
+		"position": "top",
+		"margin-top": 10,
+		"height": 30,
+		"modules-left": ["cpu","memory"],
+		"modules-center": ["pulseaudio","clock"],
+		"modules-right": ["battery","bluetooth","network", "hyprland/workspaces"],
+		"cpu": { 
+			"interval": 10, 
+			"format": "󰻠 {usage}%" 
+		},
+		"memory": {
+			"interval": 30,
+			"format": "  {percentage}% 󰓡 {swapPercentage}%"
+		},
+		"battery": {
+			"bat": "BAT0",
+			"spacing": 0,
+			"states": {
+				"good": 95,
+				"warning": 30,
+				"critical": 5
+			},
+			"format": " {capacity}%",
+			"format-charging": " {capacity}% 󱐋",
+			"format-plugged": " {capacity}% ",
+		},
+		"clock": {
+			"format": " 󰐝 {:%H:%M}",
+			"tooltip-format": "<tt><small>{calendar}</small></tt>",
+			"calendar": {
+				"format": {
+					"months": "<span color='#D179EE'><b>{}</b></span>",
+					"today": "<span color='#7ac3ff'><b>{}</b></span>",
+					"days": "<span color='#eb87b6'><b>{}</b></span>"
+				}
+			}
+		},
+		"pulseaudio": {
+			"format": "{icon} {volume}%",
+			"format-icons": {
+				"default": ["󰕿", "󰖀", "󰕾"]
+			},
+			"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+			"on-click-right": "pavucontrol",
+			"format-muted": "󰖁 {volume}%"
+		},
+		"bluetooth": {
+			"on-click": "blueman-manager",
+			"format-on": "󰂯 ",
+			"format-off": "󰂲 ",
+			"format-connected": "󰂯 {device_alias}",
+			"format-disabled": "󰂲 "
+		},
+		"network": {
+			"format": "{ifname}",
+			"format-wifi": "  {signalStrength}% {essid}",
+			"format-disconnected": "󰤯", //An empty format will hide the module.
+			"on-click-right": "nm-connection-editor"
+		},
+		"hyprland/workspaces": {
+			"active-only": true,
+			"format": "{icon}",
+			"format-icons": {
+				"1": "󰣘",
+				"2": "󰣙",
+				"3": "",
+				"4": "",
+				"default": "󰻀"
+			},
+		},
 }

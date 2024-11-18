@@ -10,12 +10,21 @@
 		home-manager.url = "github:nix-community/home-manager/release-24.05";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 		spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-		 wezterm = {
-      url = "github:wez/wezterm?dir=nix";
-    };
+		wezterm = {
+			url = "github:wez/wezterm?dir=nix";
+		};
+		hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 	};
 
-	outputs = { self, nixpkgs, nixpkgs-unstable,home-manager,spicetify-nix,nixpkgs-master,wezterm,... }:
+	outputs = { self, 
+				nixpkgs, 
+				nixpkgs-unstable,
+				home-manager,
+				spicetify-nix,
+				nixpkgs-master,
+				wezterm,
+				hyprpanel,
+				... }:
 		let
 			lib = nixpkgs.lib;
 			system = "x86_64-linux";
@@ -28,6 +37,7 @@
 						inherit wezterm;
 					};
 					modules = [ 
+						{nixpkgs.overlays = [hyprpanel.overlay];}
 						./configuration.nix
 					];
 				};
@@ -35,15 +45,16 @@
 		homeConfigurations = {
 			marko = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
-				extraSpecialArgs = {inherit spicetify-nix;
-						nixpkgsUnstable = import nixpkgs-unstable{
-							inherit system;
-							config.allofUnfree = true;
-						};
-						nixpkgsMaster = import nixpkgs-master{
-							inherit system;
-							config.allofUnfree = true;
-						};
+				extraSpecialArgs = {
+					inherit spicetify-nix;
+					nixpkgsUnstable = import nixpkgs-unstable{
+						inherit system;
+						config.allofUnfree = true;
+					};
+					nixpkgsMaster = import nixpkgs-master{
+						inherit system;
+						config.allofUnfree = true;
+					};
 				};
 				modules = [
 					./home.nix

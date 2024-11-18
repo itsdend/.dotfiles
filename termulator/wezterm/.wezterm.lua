@@ -44,7 +44,8 @@ config.colors = {
 	}
 }
 
-config.max_fps = 180
+config.max_fps = 240
+config.max_fps = 100
 config.leader = { key = 'm', mods = 'CTRL' }
 config.keys = {
 	{

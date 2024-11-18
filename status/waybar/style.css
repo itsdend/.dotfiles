@@ -25,12 +25,14 @@
 }
 
 #workspaces {
+    background: transparent;
+    border: 2px solid #FC50B4; /* Combine width, style, and color */
+    color: #FC50B4;
 	padding: 0rem 0rem 0rem 0rem;
-	background: #FC50B4;
 }
 
 #workspaces button:hover {
-	background: #FC50B4;
+	background: transparent;
 
 }
 
@@ -48,38 +50,55 @@
 #workspaces
 
 #cpu {
-	background-color: #7ac3ff;
+    background: transparent;
+    border: 2px solid #7ac3ff; /* Combine width, style, and color */
+    color: #7ac3ff;
 }
 
 #memory {
-	background-color: #D179EE;
+    background: transparent;
+    border: 2px solid #D179EE; /* Combine width, style, and color */
+    color: #D179EE;
 }
 
 #pulseaudio {
-	background: #eb87b6;
+    background: transparent;
+    border: 2px solid #eb87b6; /* Combine width, style, and color */
+    color: #eb87b6;
+	border-right: none;
 	padding: 0rem 0rem 0rem 1rem;
 	border-radius: 1rem 0rem 0rem 1rem;
 }
 
 #clock {
-	background: #eb87b6;
+    background: transparent;
+    border: 2px solid #eb87b6; /* Combine width, style, and color */
+    color: #eb87b6;
+	border-left: none;
 	padding: 0rem 1rem 0rem 0rem;
 	border-radius: 0rem 1rem 1rem 0rem;
 }
 
 #battery {
-	background-color: #4FC8B7;
+    background: transparent;
+    border: 2px solid #4FC8B7; /* Combine width, style, and color */
+    color: #4FC8B7;
+	border-right: none;
 	padding: 0rem 0rem 0rem 1rem;
 	border-radius: 1rem 0rem 0rem 1rem;
 }
 #bluetooth { 
-	background-color: #4FC8B7;
+    background: transparent;
+    border: 2px solid #4FC8B7; /* Combine width, style, and color */
+    color: #4FC8B7;
+	border-right: none;
+	border-left: none;
 	padding: 0rem 0rem 0rem 1rem;
 	border-radius: 0rem 0rem 0rem 0rem;
 }
 
 #battery.critical:not(.charging) {
-	background-color: #f53c3c;
+	color: #f53c3c;
 	animation-name: blink;
 	animation-duration: 0.5s;
 	animation-timing-function: linear;
@@ -89,20 +108,18 @@
 
 
 #battery.charging {
-	background-color: #4FC8B7;
+	color: #4FC8B7;
 }
 
 #battery.warning:not(.charging) {
-	background-color: #FC50B4;
+	color: #FC50B4;
 }
 
 #network {
-	background-color: #4FC8B7;
+    background: transparent;
+    border: 2px solid #4FC8B7; /* Combine width, style, and color */
+    color: #4FC8B7;
+	border-left: none;
 	padding: 0rem 1rem 0rem 0rem;
 	border-radius: 0rem 1rem 1rem 0rem;
-}
-
-#tray {
-	margin-right: 1rem;
-	border-radius: 1rem;
 }
