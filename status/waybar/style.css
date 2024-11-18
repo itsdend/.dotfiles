@@ -4,36 +4,26 @@
 	font-family: 'ComicShannsMono Nerd Font';
 	padding: 0rem 1rem 0rem 1rem;
 	border-radius: 1rem 1rem 1rem 1rem;
+	background-color: transparent;
+	background: transparent;
 
 }
 
 #tooltip {
-	background-color: #24273a;
-	background: transparent;
 	color: #eb87b6
 }
 #tooltip * {
-	background-color: #24273a;
-	background: transparent;
 	color: #eb87b6
 }
 
 #waybar {
-	background-color: #24273a;
-	background: transparent;
 	color: #24273a;
 }
 
 #workspaces {
-    background: transparent;
     border: 2px solid #FC50B4; /* Combine width, style, and color */
     color: #FC50B4;
 	padding: 0rem 0rem 0rem 0rem;
-}
-
-#workspaces button:hover {
-	background: transparent;
-
 }
 
 #clock,
@@ -50,19 +40,16 @@
 #workspaces
 
 #cpu {
-    background: transparent;
     border: 2px solid #7ac3ff; /* Combine width, style, and color */
     color: #7ac3ff;
 }
 
 #memory {
-    background: transparent;
     border: 2px solid #D179EE; /* Combine width, style, and color */
     color: #D179EE;
 }
 
 #pulseaudio {
-    background: transparent;
     border: 2px solid #eb87b6; /* Combine width, style, and color */
     color: #eb87b6;
 	border-right: none;
@@ -71,7 +58,6 @@
 }
 
 #clock {
-    background: transparent;
     border: 2px solid #eb87b6; /* Combine width, style, and color */
     color: #eb87b6;
 	border-left: none;
@@ -80,7 +66,6 @@
 }
 
 #battery {
-    background: transparent;
     border: 2px solid #4FC8B7; /* Combine width, style, and color */
     color: #4FC8B7;
 	border-right: none;
@@ -88,7 +73,6 @@
 	border-radius: 1rem 0rem 0rem 1rem;
 }
 #bluetooth { 
-    background: transparent;
     border: 2px solid #4FC8B7; /* Combine width, style, and color */
     color: #4FC8B7;
 	border-right: none;
@@ -116,7 +100,6 @@
 }
 
 #network {
-    background: transparent;
     border: 2px solid #4FC8B7; /* Combine width, style, and color */
     color: #4FC8B7;
 	border-left: none;

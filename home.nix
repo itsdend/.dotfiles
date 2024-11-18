@@ -63,8 +63,7 @@
 # # the Nix store. Activating the configuration will then make '~/.screenrc' a
 # # symlink to the Nix store copy.
 # ".screenrc".source = dotfiles/screenrc;
-		".cache/ags/hyprpanel/hyprpanel_config.json".source = "${./hyper/hyprpanel/hyprpanel_config.json}";
-		".cache/ags/hyprpanel/hyprpanel_theme.json".source = "${./hyper/hyprpanel/hyprpanel_theme.json}";
+		".config/mako/config".source = "${./mako/config}";
 		".wezterm.lua".source = "${./termulator/wezterm/.wezterm.lua}";
 		".config/rofi/config.rasi".source = "${./rofi_run/config.rasi}";
 		".config/hypr/hyprland.conf".source = "${./hyper/hyprland.conf}";

@@ -13,7 +13,6 @@
 		wezterm = {
 			url = "github:wez/wezterm?dir=nix";
 		};
-		hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 	};
 
 	outputs = { self, 
@@ -23,7 +22,6 @@
 				spicetify-nix,
 				nixpkgs-master,
 				wezterm,
-				hyprpanel,
 				... }:
 		let
 			lib = nixpkgs.lib;
@@ -37,7 +35,6 @@
 						inherit wezterm;
 					};
 					modules = [ 
-						{nixpkgs.overlays = [hyprpanel.overlay];}
 						./configuration.nix
 					];
 				};

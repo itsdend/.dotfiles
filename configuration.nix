@@ -5,13 +5,13 @@
 { config, pkgs,wezterm, ... }:
 
 let
-  # Import the unstable nixos channel
+# Import the unstable nixos channel
 
 #cus_vivaldi = pkgs.vivaldi.overrideAttrs (oldAttrs: {
-	#	dontWrapQtApps = false;
-	#dontPatchELF = true;
-	#	nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ pkgs.kdePackages.wrapQtAppsHook ];
-	#	});
+#	dontWrapQtApps = false;
+#dontPatchELF = true;
+#	nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ pkgs.kdePackages.wrapQtAppsHook ];
+#	});
 
 in
 
@@ -20,7 +20,7 @@ in
 		[ # Include the results of the hardware scan.
 		./hardware-configuration.nix
 		];
-		
+
 
 # Bootloader.
 	boot.loader.systemd-boot.enable = true;
@@ -31,19 +31,19 @@ in
 
 
 	networking.hostName = "nixos"; # Define your hostname.
-	networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-	networking.wireless.networks = {
-		"t18_deco" = {
-			pskRaw = "0207f26b35fea9327883ab92ebec77974e9ae60afaa4c70bdf201944f0fe6253";
-		};
-	};
+#networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+#	networking.wireless.networks = {
+#		"t18_deco" = {
+#			pskRaw = "0207f26b35fea9327883ab92ebec77974e9ae60afaa4c70bdf201944f0fe6253";
+#		};
+#	};
 
 # Configure network proxy if necessary
 # networking.proxy.default = "http://user:password@proxy:port/";
 # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
 # Enable networking
-	networking.networkmanager.enable = false;
+		networking.networkmanager.enable = true;
 
 # Set your time zone.
 	time.timeZone = "Europe/Zagreb";
@@ -97,15 +97,15 @@ in
 #media-session.enable = true;
 	};
 
-  # Bluetooth Stuff
-  services.blueman.enable = true;
-  hardware.bluetooth = {
-    enable = true;
-    package = pkgs.bluez;
-    settings.general = {
-      enable = "Source,Sink,Media,Socket";
-    };
-  };
+# Bluetooth Stuff
+	services.blueman.enable = true;
+	hardware.bluetooth = {
+		enable = true;
+		package = pkgs.bluez;
+		settings.general = {
+			enable = "Source,Sink,Media,Socket";
+		};
+	};
 # Enable touchpad support (enabled default in most desktopManager).
 # services.xserver.libinput.enable = true;
 
@@ -119,7 +119,7 @@ in
 		];
 	};
 	programs.wireshark.enable = true;
-	
+
 
 # Install firefox.
 	programs.firefox.enable = true;
@@ -135,37 +135,36 @@ in
 	environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
 
 # Allow unfree packages
-	nixpkgs.config = {
-		allowUnfree = true;
-	};
+		nixpkgs.config = {
+			allowUnfree = true;
+		};
 # List packages installed in system profile. To search, run:
 # $ nix search wget
 	environment.systemPackages = with pkgs; [
+#cus_vivaldi
+#	(vivaldi.overrideAttrs (oldAttrs: {
+#  buildInputs = (oldAttrs.buildInputs or []) ++ [
+#    pkgs.libsForQt5.qtwayland
+#    pkgs.libsForQt5.qtx11extras
+#    pkgs.kdePackages.plasma-integration.qt5
+#    pkgs.kdePackages.kio-extras-kf5
+#    pkgs.kdePackages.breeze.qt5
+#  ];
+#}))
 		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-		#cus_vivaldi
-	#	(vivaldi.overrideAttrs (oldAttrs: {
-    #  buildInputs = (oldAttrs.buildInputs or []) ++ [
-    #    pkgs.libsForQt5.qtwayland
-    #    pkgs.libsForQt5.qtx11extras
-    #    pkgs.kdePackages.plasma-integration.qt5
-    #    pkgs.kdePackages.kio-extras-kf5
-    #    pkgs.kdePackages.breeze.qt5
-    #  ];
-    #}))
-	hyprpanel
-	vivaldi
+		vivaldi
 		(catppuccin-sddm.override {
-				flavor = "mocha";
-				font = "ComicShannsMono Nerd Font";
-				fontSize = "15";
+			 flavor = "mocha";
+			 font = "ComicShannsMono Nerd Font";
+			 fontSize = "15";
 #customBackground = true;
-				background = "${./wallpapers/mks_color_ver2.png}";
-				loginBackground = false;
-				})
-  		gcc
+			 background = "${./wallpapers/mks_color_ver2.png}";
+			 loginBackground = false;
+		})
+		gcc
 		waybar
 		rofi-wayland
-		#wezterm
+#wezterm
 		wezterm.packages.${pkgs.system}.default
 		neofetch
 		wget
@@ -196,23 +195,15 @@ in
 		thunderbird-unwrapped
 		ripgrep
 		devbox
-
+		mako
 		wireshark
-
-		# unstalbe and lsp
-#		nixpkgsUnstable.erlang-ls
-#		nixpkgsUnstable.erlang_27
-#		nixpkgsUnstable.beam.packages.erlang_27.rebar3
-#		nixpkgsUnstable.elixir-ls
 		];
 
 	fonts.packages = with pkgs; [
 		(nerdfonts.override { fonts = [ "ComicShannsMono" ]; })
 	];
 
-#networking.networkmanager.enable.true;
 	services.dbus.enable = true;
-
 	services.xserver.videoDrivers = ["amdgpu"];
 	hardware.opengl = {
 		enable = true;
@@ -247,7 +238,7 @@ in
 # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 	system.stateVersion = "24.05"; # Did you read the comment?
 
-	nix.settings.experimental-features = [ "nix-command" "flakes"];
+		nix.settings.experimental-features = [ "nix-command" "flakes"];
 
 	services.logind.lidSwitch = "ignore";
 	services.flatpak.enable = true;
