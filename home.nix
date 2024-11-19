@@ -23,19 +23,19 @@
 # environment.
 	home.packages =  with pkgs; [
 
+		spicetify-cli
 		neovim
 		lazygit
 		wezterm
 		oh-my-posh
 # lsps
+		nil # nix lsp
 		unixODBC
 		luajitPackages.lua-lsp
-		#llvmPackages_18.clang-unwrapped
 		clang-tools
 		clang
 		cmake
 		boost
-		spicetify-cli
 		#nixpkgsUnstable.erlang-ls this is for now installed manually because the current version is behind erlang 27
 		nixpkgsMaster.beam.packages.erlang_27.erlang-ls
 		nixpkgsUnstable.erlang_27

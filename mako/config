@@ -1,3 +1,4 @@
+anchor=bottom-right
 font=ComicShannsMono Nerd Font
 background-color=#24273AFF
 text-color=#EB87B6
@@ -6,4 +7,5 @@ border-color=#EB87B6
 border-size=2
 width=400
 height=200
+outer-margin=0,0,20
 margin=20
