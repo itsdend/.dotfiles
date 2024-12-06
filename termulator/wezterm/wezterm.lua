@@ -10,7 +10,6 @@ config.enable_wayland = false
 
 	-- colors
 
-wezterm.gui.enumerate_gpus()
 config.window_background_opacity = 0.9
 -- This is where you actually apply your config choices
 config.colors = {
@@ -44,8 +43,7 @@ config.colors = {
 	}
 }
 
-config.max_fps = 240
-config.max_fps = 100
+config.max_fps = 144
 config.leader = { key = 'm', mods = 'CTRL' }
 config.keys = {
 	{
@@ -122,12 +120,9 @@ config.keys = {
 
 }
 
--- fonts
---config.font_dirs = {
---      'C:\\Windows\\Fonts'
---  }
 config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 547 })
-config.font_size = 12.9
+-- config.font_size = 12.9
+config.font_size = 19.4
 
 -- gpu
 -- config.front_end = "OpenGL"
