@@ -44,7 +44,7 @@ config.colors = {
 }
 
 config.max_fps = 144
-config.leader = { key = 'm', mods = 'CTRL' }
+config.leader = { key = 'a', mods = 'ALT' }
 config.keys = {
 	{
 		key = 'v',
@@ -67,13 +67,23 @@ config.keys = {
 		action = wezterm.action { PaneSelect = { alphabet = 'hljkdfas' } }
 	},
 	{
-		key = '.',
-		mods = 'ALT',
+		key = 'l',
+		mods = 'LEADER',
 		action = wezterm.action.ActivatePaneDirection 'Right'
 	},
 	{
-		key = ',',
-		mods = 'ALT',
+		key = 'j',
+		mods = 'LEADER',
+		action = wezterm.action.ActivatePaneDirection 'Down'
+	},
+	{
+		key = 'k',
+		mods = 'LEADER',
+		action = wezterm.action.ActivatePaneDirection 'Up'
+	},
+	{
+		key = 'h',
+		mods = 'LEADER',
 		action = wezterm.action.ActivatePaneDirection 'Left'
 	},
 	{
@@ -102,12 +112,12 @@ config.keys = {
 		action = wezterm.action.ScrollToPrompt(1)
 	},
 	{
-		key = 'j',
+		key = 'n',
 		mods = 'LEADER',
 		action = wezterm.action.ScrollByLine(1)
 	},
 	{
-		key = 'k',
+		key = 'm',
 		mods = 'LEADER',
 		action = wezterm.action.ScrollByLine(-1)
 	},
