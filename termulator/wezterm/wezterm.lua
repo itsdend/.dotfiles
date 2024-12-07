@@ -6,9 +6,13 @@ local wezterm = require 'wezterm'
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+wezterm.on('update-right-status', function(window, pane)
+	window:set_right_status(window:active_workspace())
+end)
+config.default_workspace = "main"
 config.enable_wayland = false
 
-	-- colors
+-- colors
 
 config.window_background_opacity = 0.9
 -- This is where you actually apply your config choices
@@ -102,12 +106,12 @@ config.keys = {
 		action = wezterm.action.ScrollToBottom
 	},
 	{
-		key = 'i',
+		key = ',',
 		mods = 'LEADER',
 		action = wezterm.action.ScrollToPrompt(-1)
 	},
 	{
-		key = 'a',
+		key = '.',
 		mods = 'LEADER',
 		action = wezterm.action.ScrollToPrompt(1)
 	},
@@ -125,15 +129,55 @@ config.keys = {
 		key = 'q',
 		mods = 'LEADER',
 		action = wezterm.action.ActivateCopyMode
-	}
-
-
+	},
+	-- {
+	-- 	key = 't',
+	-- 	mods = 'SHIFT|ALT',
+	-- 	action = wezterm.action.SpawnTab 'DefaultDomain',
+	-- },
+	-- Switch to the default workspace
+	{
+		key = 'i',
+		mods = 'LEADER',
+		action = wezterm.action.SwitchToWorkspace {
+			name = 'main',
+		},
+	},
+	{
+		key = 'o',
+		mods = 'LEADER',
+		action = wezterm.action.SwitchToWorkspace {
+			name = 'dep',
+		},
+	},
+	{
+		key = 'p',
+		mods = 'LEADER',
+		action = wezterm.action.SwitchToWorkspace {
+			name = 'background',
+		},
+	},
+	{ key = 'f', mods = 'LEADER', action = wezterm.action.ShowLauncher },
 }
 
 config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 547 })
 -- config.font_size = 12.9
-config.font_size = 19.4
+-- config.font_size = 19.4
 
+-- This doesn't work well on a dual screen setup, and is hopefully a temporary solution to the font rendering oddities
+-- shown in https://github.com/wez/wezterm/issues/4096. Ideally I'll switch to using `dpi_by_screen` at some point,
+-- but for now 11pt @ 109dpi seems to be the most stable for font rendering on my 38" ultrawide LG monitor here.
+wezterm.on('window-config-reloaded', function(window)
+	if wezterm.gui.screens().active.name == 'eDP-1' then
+		window:set_config_overrides({
+			font_size = 19.4
+		})
+	else
+		window:set_config_overrides({
+			font_size = 12.9
+		})
+	end
+end)
 -- gpu
 -- config.front_end = "OpenGL"
 
