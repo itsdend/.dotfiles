@@ -190,6 +190,7 @@ in
 		kitty
 		hyprcursor
 		catppuccin-cursors.mochaRed
+		qmk
 		via
 		xclip
 		thunderbird-unwrapped
@@ -208,6 +209,8 @@ in
 	hardware.opengl = {
 		enable = true;
 	};
+	hardware.keyboard.qmk.enable = true;
+	services.udev.packages = [pkgs.via];
 #services.xserver.displayManager.lightdm.enable = true;
 
 
