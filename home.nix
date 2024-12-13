@@ -132,6 +132,10 @@ gtk-decoration-layout = icon:minimize,maximize,close";
 	programs.bash.bashrcExtra = "eval \"$(oh-my-posh init bash --config ~/.dotfiles/ohmyposh/larserikfinhold.omp.json)\"
 		export XCURSOR_THEME=\"catppuccin-mocha-red-cursors\"
 		export PATH=\"$PATH:$HOME/projects/open-source/nixpkgs/result/bin\"
+		export GTK_IM_MODULE=ibus
+		export QT_IM_MODULE=ibus
+		export XMODIFIERS=\"@im=ibus\"
+
 
 		";
 		# TODO nixpkgs/result/bin is used for erlang_ls 1.0.0, when that version come live delete line 130

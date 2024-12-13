@@ -28,8 +28,6 @@ in
 
 	environment.shells = with pkgs; [ bash ];
 	users.defaultUserShell = pkgs.bash;
-
-
 	networking.hostName = "nixos"; # Define your hostname.
 #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 #	networking.wireless.networks = {
@@ -168,6 +166,7 @@ in
 		wezterm.packages.${pkgs.system}.default
 		neofetch
 		wget
+		ibus
 		git
 		wireplumber
 		pa-notify
@@ -241,7 +240,7 @@ in
 # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 	system.stateVersion = "24.05"; # Did you read the comment?
 
-		nix.settings.experimental-features = [ "nix-command" "flakes"];
+	nix.settings.experimental-features = [ "nix-command" "flakes"];
 
 	services.logind.lidSwitch = "ignore";
 	services.flatpak.enable = true;

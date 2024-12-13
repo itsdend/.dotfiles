@@ -47,6 +47,7 @@ config.colors = {
 	}
 }
 
+config.use_ime = true
 config.max_fps = 144
 config.leader = { key = 'a', mods = 'ALT' }
 config.keys = {
@@ -158,6 +159,13 @@ config.keys = {
 		},
 	},
 	{ key = 'f', mods = 'LEADER', action = wezterm.action.ShowLauncher },
+	{
+		key = 'e',
+		mods = 'SHIFT|CTRL',
+		action = wezterm.action.CharSelect {
+			copy_on_select = false
+		},
+	},
 }
 
 config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 547 })
