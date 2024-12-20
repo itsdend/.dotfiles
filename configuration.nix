@@ -4,7 +4,7 @@
 
 { config, pkgs,wezterm, ... }:
 
-let
+#let
 # Import the unstable nixos channel
 
 #cus_vivaldi = pkgs.vivaldi.overrideAttrs (oldAttrs: {
@@ -13,7 +13,7 @@ let
 #	nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ pkgs.kdePackages.wrapQtAppsHook ];
 #	});
 
-in
+#in
 
 {
 	imports =
@@ -45,6 +45,13 @@ in
 
 # Set your time zone.
 	time.timeZone = "Europe/Zagreb";
+	i18n.inputMethod = {
+		enabled = "fcitx5";
+		fcitx5.addons = with pkgs; 
+		[
+			fcitx5-m17n
+		];
+	};
 
 # Select internationalisation properties.
 	i18n.defaultLocale = "en_US.UTF-8";

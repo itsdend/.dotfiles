@@ -166,6 +166,11 @@ config.keys = {
 			copy_on_select = false
 		},
 	},
+	{
+      key = 'u',
+      mods = 'CTRL|SHIFT',
+      action = wezterm.action.DisableDefaultAssignment,
+    },
 }
 
 config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 547 })

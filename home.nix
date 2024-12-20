@@ -109,17 +109,20 @@
 	gtk = {
 		enable = true;
 		gtk3.extraConfig = {
-				gtk-application-prefer-dark-theme=1;
-					gtk-decoration-layout=icon:minimize,maximize,close;
-					};
+			gtk-application-prefer-dark-theme=1;
+			gtk-decoration-layout=icon:minimize,maximize,close;
+			gtk-im-module="fcitx";
+		};
 		gtk4.extraConfig = {
-				gtk-application-prefer-dark-theme=1;
-					gtk-decoration-layout=icon:minimize,maximize,close;
-					};
-		
+			gtk-application-prefer-dark-theme=1;
+			gtk-decoration-layout=icon:minimize,maximize,close;
+			gtk-im-module="fcitx";
+		};
 		gtk2.extraConfig = 
-				"gtk-application-prefer-dark-theme=1
-gtk-decoration-layout = icon:minimize,maximize,close";
+			"gtk-application-prefer-dark-theme=1
+			gtk-decoration-layout = icon:minimize,maximize,close
+			gtk-im-module=\"fcitx\";
+			";
 		font = {
 			name = "ComicShannsMono Nerd Font bold 15";
 		};
