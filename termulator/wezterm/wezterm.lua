@@ -92,12 +92,12 @@ config.keys = {
 		action = wezterm.action.ActivatePaneDirection 'Left'
 	},
 	{
-		key = 'u',
+		key = 'e',
 		mods = 'LEADER',
 		action = wezterm.action.ScrollByPage(-0.5)
 	},
 	{
-		key = 'd',
+		key = 'r',
 		mods = 'LEADER',
 		action = wezterm.action.ScrollByPage(0.5)
 	},
@@ -138,17 +138,27 @@ config.keys = {
 	-- },
 	-- Switch to the default workspace
 	{
-		key = 'i',
+		key = 'u',
 		mods = 'LEADER',
 		action = wezterm.action.SwitchToWorkspace {
 			name = 'main',
+			args = {'cd'}
+		},
+	},
+	{
+		key = 'i',
+		mods = 'LEADER',
+		action = wezterm.action.SwitchToWorkspace {
+			name = 'second',
+			args = {'cd'}
 		},
 	},
 	{
 		key = 'o',
 		mods = 'LEADER',
 		action = wezterm.action.SwitchToWorkspace {
-			name = 'dep',
+			name = 'third',
+			args = {'cd'}
 		},
 	},
 	{
@@ -156,9 +166,12 @@ config.keys = {
 		mods = 'LEADER',
 		action = wezterm.action.SwitchToWorkspace {
 			name = 'background',
+			args = {'cd'}
+
 		},
 	},
-	{ key = 'f', mods = 'LEADER', action = wezterm.action.ShowLauncher },
+	{ key = 'f', mods = 'LEADER', action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' },},
+	{ key = 'a', mods = 'LEADER', action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|DOMAINS' },},
 	{
 		key = 'e',
 		mods = 'SHIFT|CTRL',
