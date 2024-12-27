@@ -67,6 +67,7 @@
 		".config/mako/config".source = "${./mako/config}";
 		".wezterm.lua".source = "${./termulator/wezterm/wezterm.lua}";
 		".config/rofi/config.rasi".source = "${./rofi_run/config.rasi}";
+		".config/ghostty/config".source = "${./termulator/ghostty/config}";
 		".config/hypr/hyprland.conf".source = "${./hyper/hyprland.conf}";
 		".config/hypr/hyprpaper.conf".source = "${./hyper/hyprpaper.conf}";
 		".config/hypr/hyprlock.conf".source = "${./hyper/hyprlock.conf}";
@@ -138,8 +139,6 @@
 		export GTK_IM_MODULE=ibus
 		export QT_IM_MODULE=ibus
 		export XMODIFIERS=\"@im=ibus\"
-
-
 		set -o vi
 		export EDITOR=nvim
 		";

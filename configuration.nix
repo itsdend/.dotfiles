@@ -2,6 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
+{ config, pkgs,wezterm,ghostty, ... }:
 
 #let
 # Import the unstable nixos channel
@@ -170,6 +171,7 @@
 		rofi-wayland
 #wezterm
 		wezterm.packages.${pkgs.system}.default
+		ghostty.packages.${pkgs.system}.default
 		neofetch
 		wget
 		ibus

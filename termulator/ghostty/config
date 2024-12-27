@@ -1,0 +1,56 @@
+foreground = EB87B6
+background = 24273A
+
+selection-background = F825C3
+cursor-color = FDFD96
+
+mouse-hide-while-typing = true
+
+background-opacity = 0.9
+
+title = "ghostty"
+window-decoration = false
+gtk-tabs-location = hidden
+window-new-tab-position = end
+
+focus-follows-mouse = true
+
+font-family = ComicShannsMono Nerd Font Propo
+font-variation = wght=547
+font-size = 14
+font-thicken = true
+
+cursor-style = block
+
+
+# Ghostty Theme Configuration
+palette = 0=#8A3868
+palette = 1=#FC50B4
+palette = 2=#4FC8B7
+palette = 3=#F9E2AF
+palette = 4=#7AC3FF
+palette = 5=#D179EE
+palette = 6=#F2D5CF
+palette = 7=#699DAD
+palette = 8=#8A3868
+palette = 9=#FC50B4
+palette = 10=#4FC8B7 
+palette = 11=#F9E2AF 
+palette = 12=#7AC3FF 
+palette = 13=#D179EE 
+palette = 14=#F2D5CF 
+palette = 15=#699DAD 
+
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = alt+a>s=new_split:right
+keybind = alt+a>v=new_split:down
+keybind = alt+a>h=goto_split:left
+keybind = alt+a>l=goto_split:right
+keybind = alt+a>j=goto_split:bottom
+keybind = alt+a>k=goto_split:top
+keybind = alt+a>w=close_surface
+keybind = alt+a>t=new_tab
+keybind = alt+a>i=goto_tab:1
+keybind = alt+a>o=goto_tab:2
+keybind = alt+a>p=goto_tab:3
+keybind = alt+a>d=toggle_tab_overview

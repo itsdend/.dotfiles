@@ -13,6 +13,10 @@
 		wezterm = {
 			url = "github:wez/wezterm?dir=nix";
 		};
+		ghostty = {
+			url = "github:ghostty-org/ghostty";
+		};
+
 	};
 
 	outputs = { self, 
@@ -22,6 +26,7 @@
 				spicetify-nix,
 				nixpkgs-master,
 				wezterm,
+				ghostty,
 				... }:
 		let
 			lib = nixpkgs.lib;
@@ -33,6 +38,7 @@
 					inherit system;
 					specialArgs = {
 						inherit wezterm;
+						inherit ghostty;
 					};
 					modules = [ 
 						./configuration.nix
