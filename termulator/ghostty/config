@@ -17,7 +17,7 @@ focus-follows-mouse = true
 
 font-family = ComicShannsMono Nerd Font Propo
 font-variation = wght=547
-font-size = 14
+font-size = 13
 font-thicken = true
 
 cursor-style = block

@@ -10,7 +10,7 @@ wezterm.on('update-right-status', function(window, pane)
 	window:set_right_status(window:active_workspace())
 end)
 config.default_workspace = "main"
-config.enable_wayland = false
+config.enable_wayland = true
 
 -- colors
 
@@ -187,16 +187,21 @@ config.keys = {
 }
 
 config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 547 })
--- config.font_size = 12.9
+config.font_size = 13
 -- config.font_size = 19.4
 
 -- This doesn't work well on a dual screen setup, and is hopefully a temporary solution to the font rendering oddities
 -- shown in https://github.com/wez/wezterm/issues/4096. Ideally I'll switch to using `dpi_by_screen` at some point,
 -- but for now 11pt @ 109dpi seems to be the most stable for font rendering on my 38" ultrawide LG monitor here.
+--
+-- THIS IS THE CONFIG FOR XWAYLAND FOR THE FONT SIZE DEPENDING ON THE MONITOR
+--
+--
 wezterm.on('window-config-reloaded', function(window)
 	if wezterm.gui.screens().active.name == 'eDP-1' then
 		window:set_config_overrides({
-			font_size = 19.4
+			-- font_size = 19.4 -- this is if its on xwayland
+			font_size = 12.9
 		})
 	else
 		window:set_config_overrides({
