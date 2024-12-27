@@ -140,6 +140,8 @@
 		export XMODIFIERS=\"@im=ibus\"
 
 
+		set -o vi
+		export EDITOR=nvim
 		";
 		# TODO nixpkgs/result/bin is used for erlang_ls 1.0.0, when that version come live delete line 130
 

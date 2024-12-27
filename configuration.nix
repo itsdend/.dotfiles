@@ -2,7 +2,6 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs,wezterm, ... }:
 
 #let
 # Import the unstable nixos channel
@@ -118,7 +117,7 @@
 	users.users.marko = {
 		isNormalUser = true;
 		description = "marko";
-		extraGroups = [ "networkmanager" "wheel" "wireshark" ];
+		extraGroups = [ "networkmanager" "wheel" "wireshark"];
 		packages = with pkgs; [
 			kdePackages.kate
 		];
@@ -199,11 +198,13 @@
 		qmk
 		via
 		xclip
-		thunderbird-unwrapped
+		thunderbird
 		ripgrep
 		devbox
+		libnotify
 		mako
 		wireshark
+		libsecret
 		];
 
 	fonts.packages = with pkgs; [

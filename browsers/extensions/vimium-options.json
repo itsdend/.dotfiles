@@ -1,0 +1,4 @@
+{
+  "settingsVersion": "2.1.2",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EB87B6),\n  color-stop(100%,#7ac3ff));\nborder: 1px solid #EB87B6;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: black;\nfont-weight: bold;\nfont-size: 12px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n} \n\n/* HUD (\"heads-up display\") bar */\ndiv.vimiumHUD {\n  background: #24273A;\n  border: 1px solid #EB87B6;\n}\n\ndiv.vimiumHUD .vimiumHUDSearchArea {\n  background: #24273A;\n}\n\ndiv.vimiumHUD .hud-find {\n  background: #24273A;\n  border: none;\n  color: #EB87B6;\n}\n\ndiv.vimiumHUD span#hud-find-input{\n  color: #EB87B6;  /* 'Foreground' color */\n}\n\ndiv.vimiumHUD span#hud-match-count {\n  color: #EB87B6;  /* 'Comment' color */\n}\n\ndiv.vimiumHUD .vimiumHUDSearchAreaInner {\n  color: #EB87B6;  /* 'Comment' color */\n}"
+}
