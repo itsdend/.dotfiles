@@ -5,12 +5,12 @@ local wezterm = require 'wezterm'
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
-
 wezterm.on('update-right-status', function(window, pane)
 	window:set_right_status(window:active_workspace())
 end)
 config.default_workspace = "main"
 config.enable_wayland = true
+config.default_cursor_style = 'SteadyBlock'
 
 -- colors
 
@@ -48,7 +48,7 @@ config.colors = {
 }
 
 config.use_ime = true
-config.max_fps = 144
+config.max_fps = 240
 config.leader = { key = 'a', mods = 'ALT' }
 config.keys = {
 	{
@@ -142,7 +142,9 @@ config.keys = {
 		mods = 'LEADER',
 		action = wezterm.action.SwitchToWorkspace {
 			name = 'main',
-			args = {'cd'}
+			spawn = {
+				cwd = wezterm.home_dir
+			}
 		},
 	},
 	{
@@ -150,7 +152,9 @@ config.keys = {
 		mods = 'LEADER',
 		action = wezterm.action.SwitchToWorkspace {
 			name = 'second',
-			args = {'cd'}
+			spawn = {
+				cwd = wezterm.home_dir
+			}
 		},
 	},
 	{
@@ -158,7 +162,9 @@ config.keys = {
 		mods = 'LEADER',
 		action = wezterm.action.SwitchToWorkspace {
 			name = 'third',
-			args = {'cd'}
+			spawn = {
+				cwd = wezterm.home_dir
+			}
 		},
 	},
 	{
@@ -166,7 +172,9 @@ config.keys = {
 		mods = 'LEADER',
 		action = wezterm.action.SwitchToWorkspace {
 			name = 'background',
-			args = {'cd'}
+			spawn = {
+				cwd = wezterm.home_dir
+			}
 
 		},
 	},
@@ -184,10 +192,13 @@ config.keys = {
       mods = 'CTRL|SHIFT',
       action = wezterm.action.DisableDefaultAssignment,
     },
+	-- { key = 'd', mods = 'LEADER', action = wezterm.action.PasteFrom 'Clipboard' },
+	{ key = 'd', mods = 'LEADER', action = wezterm.action.PasteFrom 'PrimarySelection' }
 }
 
-config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 547 })
+config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 420}) -- 547 default
 config.font_size = 13
+config.cell_width = 1.1
 -- config.font_size = 19.4
 
 -- This doesn't work well on a dual screen setup, and is hopefully a temporary solution to the font rendering oddities

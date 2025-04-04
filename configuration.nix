@@ -74,14 +74,15 @@
 
 # Enable the KDE Plasma Desktop Environment.
 	services.displayManager.sddm.enable = true;
+services.displayManager.sddm.settings = {
+	Autologin = {
+		Session = "hyprland.desktop";
+		User = "marko";
+	};
+};
 	services.desktopManager.plasma6.enable = true;
 	services.displayManager.sddm.theme="catppuccin-mocha";
 
-# Configure keymap in X11
-	services.xserver = {
-		xkb.layout = "us";
-		xkb.variant = "";
-	};
 
 # Enable CUPS to print documents.
 	services.printing.enable = true;
@@ -169,6 +170,7 @@
 		gcc
 		waybar
 		rofi-wayland
+		xorg.xrandr
 #wezterm
 		wezterm.packages.${pkgs.system}.default
 		ghostty.packages.${pkgs.system}.default
@@ -200,6 +202,7 @@
 		qmk
 		via
 		xclip
+		wl-clipboard
 		thunderbird
 		ripgrep
 		devbox
@@ -207,6 +210,7 @@
 		mako
 		wireshark
 		libsecret
+		fastfetch
 		];
 
 	fonts.packages = with pkgs; [
@@ -222,6 +226,27 @@
 	services.udev.packages = [pkgs.via];
 #services.xserver.displayManager.lightdm.enable = true;
 
+
+
+ environment.etc."X11/xorg.conf.d/20-monitor.conf" = {
+    text = ''
+
+Section "Monitor"
+  Identifier "DisplayPort-9"
+  Modeline "2560x1440" 241.50  2560 2720 2992 3424  1440 1443 1453 1481 -hsync +vsync
+EndSection
+
+Section "Screen"
+  Identifier "Screen0"
+  Monitor "DisplayPort-9"
+  DefaultDepth 24
+  SubSection "Display"
+    Depth 24
+    Modes "2560x1440"
+  EndSubSection
+EndSection
+    '';
+  };
 
 # Some programs need SUID wrappers, can be configured further or are
 # started in user sessions.
@@ -253,5 +278,7 @@
 	nix.settings.experimental-features = [ "nix-command" "flakes"];
 
 	services.logind.lidSwitch = "ignore";
+	services.logind.lidSwitchExternalPower= "ignore";
+	services.logind.lidSwitchDocked="ignore";
 	services.flatpak.enable = true;
 }
