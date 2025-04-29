@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs,wezterm,ghostty, ... }:
+{ config, pkgs,ghostty, ... }:
 
 #let
 # Import the unstable nixos channel
@@ -170,9 +170,9 @@ services.displayManager.sddm.settings = {
 		gcc
 		waybar
 		rofi-wayland
+		wayland-utils
 		xorg.xrandr
-#wezterm
-		wezterm.packages.${pkgs.system}.default
+		wezterm 
 		ghostty.packages.${pkgs.system}.default
 		neofetch
 		wget
@@ -201,7 +201,6 @@ services.displayManager.sddm.settings = {
 		catppuccin-cursors.mochaRed
 		qmk
 		via
-		xclip
 		wl-clipboard
 		thunderbird
 		ripgrep
@@ -219,7 +218,7 @@ services.displayManager.sddm.settings = {
 
 	services.dbus.enable = true;
 	services.xserver.videoDrivers = ["amdgpu"];
-	hardware.opengl = {
+	hardware.graphics = {
 		enable = true;
 	};
 	hardware.keyboard.qmk.enable = true;

@@ -13,6 +13,7 @@ config.enable_wayland = true
 config.default_cursor_style = 'SteadyBlock'
 
 -- colors
+wezterm.log_info("Starting WezTerm with debugging enabled.")
 
 config.window_background_opacity = 0.9
 -- This is where you actually apply your config choices
@@ -46,6 +47,13 @@ config.colors = {
 
 	}
 }
+
+function LOL()
+	local success, stdout, stderr = wezterm.run_child_process {'wl-paste'}
+-- Remove the trailing newline (if it exists)
+  stdout = stdout:gsub("\n$", "")
+	return wezterm.action.SendString (stdout)
+end
 
 config.use_ime = true
 config.max_fps = 240
@@ -131,6 +139,11 @@ config.keys = {
 		mods = 'LEADER',
 		action = wezterm.action.ActivateCopyMode
 	},
+	{
+		key = 't',
+		mods = 'LEADER',
+		action = wezterm.action.ReloadConfiguration
+	},
 	-- {
 	-- 	key = 't',
 	-- 	mods = 'SHIFT|ALT',
@@ -188,13 +201,18 @@ config.keys = {
 		},
 	},
 	{
+		key="y", mods="LEADER", action= wezterm.action.Multiple{
+		wezterm.action.ReloadConfiguration,
+			LOL()}
+	},
+	{
       key = 'u',
       mods = 'CTRL|SHIFT',
       action = wezterm.action.DisableDefaultAssignment,
-    },
-	-- { key = 'd', mods = 'LEADER', action = wezterm.action.PasteFrom 'Clipboard' },
-	{ key = 'd', mods = 'LEADER', action = wezterm.action.PasteFrom 'PrimarySelection' }
+    }
 }
+
+
 
 config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 420}) -- 547 default
 config.font_size = 13
@@ -235,7 +253,7 @@ end
 -- top bar
 config.enable_tab_bar = false
 
-config.window_decorations = "RESIZE"
+config.window_decorations = "NONE"
 
 config.window_close_confirmation = "NeverPrompt"
 

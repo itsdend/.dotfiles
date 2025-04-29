@@ -26,7 +26,7 @@
 		spicetify-cli
 		neovim
 		lazygit
-		wezterm
+		# wezterm
 		oh-my-posh
 # lsps
 		nil # nix lsp
@@ -39,7 +39,9 @@
 		#nixpkgsUnstable.erlang-ls this is for now installed manually because the current version is behind erlang 27
 		nixpkgsMaster.beam.packages.erlang_27.erlang-ls
 		nixpkgsUnstable.erlang_27
+		# nixpkgsUnstable.wezterm
 		nixpkgsUnstable.beam.packages.erlang_27.rebar3
+		nixpkgsUnstable.signal-desktop
 		#nixpkgsUnstable.elixir-ls
 
 # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -74,7 +76,7 @@
 		".config/waybar/config".source = "${./status/waybar/config}";
 		".config/waybar/style.css".source = "${./status/waybar/style.css}";
 		".config/erlang_ls/erlang_ls.config".source = "${./lsp/erlang_ls.config}";
-#		".config/xsettingsd/xsettingsd.conf".source = "${./xda_apps/xsettingsd.conf}";
+		".config/xsettingsd/xsettingsd.conf".source = "${./xda_apps/xsettingsd.conf}";
 # ".bashrc".source = "{userDotfiles.bsh}/.bachrc";
 
 # # You can also set the file content immediately.
@@ -136,9 +138,11 @@
 	programs.bash.bashrcExtra = "eval \"$(oh-my-posh init bash --config ~/.dotfiles/ohmyposh/larserikfinhold.omp.json)\"
 		export XCURSOR_THEME=\"catppuccin-mocha-red-cursors\"
 		export PATH=\"$PATH:$HOME/projects/open-source/nixpkgs/result/bin\"
-		export GTK_IM_MODULE=ibus
-		export QT_IM_MODULE=ibus
-		export XMODIFIERS=\"@im=ibus\"
+		export GTK_IM_MODULE=fcitx5
+		export QT_IM_MODULE=fcitx5
+		export XMODIFIERS=\"@im=fcitx5\"
+		export SDL_IM_MODULE=fcitx5
+		export GLFW_IM_MODULE=fcitx5
 		set -o vi
 		export EDITOR=nvim
 		";
