@@ -5,15 +5,18 @@
 	padding: 0rem 1rem 0rem 1rem;
 	border-radius: 1rem 1rem 1rem 1rem;
 	background-color: transparent;
-	background: transparent;
+	/* background: transparent; */
+	/* background: #24273a; */
 
 }
 
 #tooltip {
-	color: #eb87b6
+	color: #eb87b6;
+	background: rgba(36, 39, 58, 0.4);
 }
 #tooltip * {
-	color: #eb87b6
+	color: #eb87b6;
+	background: rgba(36, 39, 58, 0.4);
 }
 
 #waybar {
@@ -24,6 +27,7 @@
     border: 2px solid #FC50B4; /* Combine width, style, and color */
     color: #FC50B4;
 	padding: 0rem 0rem 0rem 0rem;
+	background: rgba(36, 39, 58, 0.4);
 }
 
 #clock,
@@ -42,11 +46,13 @@
 #cpu {
     border: 2px solid #7ac3ff; /* Combine width, style, and color */
     color: #7ac3ff;
+	background: rgba(36, 39, 58, 0.4);
 }
 
 #memory {
     border: 2px solid #D179EE; /* Combine width, style, and color */
     color: #D179EE;
+	background: rgba(36, 39, 58, 0.4);
 }
 
 #pulseaudio {
@@ -55,6 +61,7 @@
 	border-right: none;
 	padding: 0rem 0rem 0rem 1rem;
 	border-radius: 1rem 0rem 0rem 1rem;
+	background: rgba(36, 39, 58, 0.4);
 }
 
 #clock {
@@ -63,6 +70,7 @@
 	border-left: none;
 	padding: 0rem 1rem 0rem 0rem;
 	border-radius: 0rem 1rem 1rem 0rem;
+	background: rgba(36, 39, 58, 0.4);
 }
 
 #battery {
@@ -71,6 +79,7 @@
 	border-right: none;
 	padding: 0rem 0rem 0rem 1rem;
 	border-radius: 1rem 0rem 0rem 1rem;
+	background: rgba(36, 39, 58, 0.4);
 }
 #bluetooth { 
     border: 2px solid #4FC8B7; /* Combine width, style, and color */
@@ -79,6 +88,7 @@
 	border-left: none;
 	padding: 0rem 0rem 0rem 1rem;
 	border-radius: 0rem 0rem 0rem 0rem;
+	background: rgba(36, 39, 58, 0.4);
 }
 
 #battery.critical:not(.charging) {
@@ -88,15 +98,18 @@
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
+	background: rgba(36, 39, 58, 0.4);
 }
 
 
 #battery.charging {
 	color: #4FC8B7;
+	background: rgba(36, 39, 58, 0.4);
 }
 
 #battery.warning:not(.charging) {
 	color: #FC50B4;
+	background: rgba(36, 39, 58, 0.4);
 }
 
 #network {
@@ -105,4 +118,5 @@
 	border-left: none;
 	padding: 0rem 1rem 0rem 0rem;
 	border-radius: 0rem 1rem 1rem 0rem;
+	background: rgba(36, 39, 58, 0.4);
 }
