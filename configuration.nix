@@ -29,12 +29,6 @@
 	environment.shells = with pkgs; [ bash ];
 	users.defaultUserShell = pkgs.bash;
 	networking.hostName = "nixos"; # Define your hostname.
-#networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-#	networking.wireless.networks = {
-#		"t18_deco" = {
-#			pskRaw = "0207f26b35fea9327883ab92ebec77974e9ae60afaa4c70bdf201944f0fe6253";
-#		};
-#	};
 
 # Configure network proxy if necessary
 # networking.proxy.default = "http://user:password@proxy:port/";
@@ -130,6 +124,8 @@ services.displayManager.sddm.settings = {
 # Install firefox.
 	programs.firefox.enable = true;
 
+
+# wayland and x11
 	programs.hyprland = {
 		enable = true;
 		xwayland.enable = true;
@@ -139,6 +135,7 @@ services.displayManager.sddm.settings = {
 	xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
 	environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
+
 
 # Allow unfree packages
 		nixpkgs.config = {
@@ -157,59 +154,101 @@ services.displayManager.sddm.settings = {
 #    pkgs.kdePackages.breeze.qt5
 #  ];
 #}))
-		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+		# browsers
 		vivaldi
+
+		# login
 		(catppuccin-sddm.override {
 			 flavor = "mocha";
 			 font = "ComicShannsMono Nerd Font";
 			 fontSize = "15";
-#customBackground = true;
 			 background = "${./wallpapers/mks_color_ver2.png}";
 			 loginBackground = false;
 		})
-		gcc
+
+		# status bar
 		waybar
+
+		# runner
 		rofi-wayland
+
+		# wayland
 		wayland-utils
-		xorg.xrandr
+
+		# terminals
 		wezterm 
 		ghostty.packages.${pkgs.system}.default
-		neofetch
-		wget
-		ibus
-		git
+		kitty
+
+		# sound
 		wireplumber
 		pa-notify
+		
+		# network
 		networkmanagerapplet
-		lua-language-server
+
+		# random
 		swww
 		libstdcxx5
-		nil
+		xorg.xrandr
+		xsettingsd
+		
+		# sound
 		pavucontrol
 		playerctl
+
+		# lsp
 		nodejs_22
 		corepack_22
 		nodePackages_latest.bash-language-server
 		vscode-langservers-extracted
 		vim-language-server
-		xsettingsd
 		dot-language-server
+		nil
+		lua-language-server
+		gcc
+
+		# hyprstuff
 		hyprpaper
 		hyprlock
-		kitty
 		hyprcursor
+
+		# themes
 		catppuccin-cursors.mochaRed
+		oh-my-posh
+
+		# keyboard
 		qmk
 		via
-		wl-clipboard
+	
+		# e mails
 		thunderbird
-		ripgrep
-		devbox
+
+		# notify
 		libnotify
 		mako
+
+		# dev tools
 		wireshark
+		devbox
 		libsecret
+		git
+		wget
+		ibus
+		lazygit
+		ripgrep
+
+		# editors
+		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+		neovim
+		
+		# system info
 		fastfetch
+
+		# common tools
+		wl-clipboard
+		zip
+		unzip
 		];
 
 	fonts.packages = with pkgs; [
@@ -223,29 +262,27 @@ services.displayManager.sddm.settings = {
 	};
 	hardware.keyboard.qmk.enable = true;
 	services.udev.packages = [pkgs.via];
-#services.xserver.displayManager.lightdm.enable = true;
 
+# TODO
+ # environment.etc."X11/xorg.conf.d/20-monitor.conf" = {
+ #    text = ''
 
+# Section "Monitor"
+ #  Identifier "DisplayPort-9"
+ #  Modeline "2560x1440" 241.50  2560 2720 2992 3424  1440 1443 1453 1481 -hsync +vsync
+# EndSection
 
- environment.etc."X11/xorg.conf.d/20-monitor.conf" = {
-    text = ''
-
-Section "Monitor"
-  Identifier "DisplayPort-9"
-  Modeline "2560x1440" 241.50  2560 2720 2992 3424  1440 1443 1453 1481 -hsync +vsync
-EndSection
-
-Section "Screen"
-  Identifier "Screen0"
-  Monitor "DisplayPort-9"
-  DefaultDepth 24
-  SubSection "Display"
-    Depth 24
-    Modes "2560x1440"
-  EndSubSection
-EndSection
-    '';
-  };
+# Section "Screen"
+ #  Identifier "Screen0"
+ #  Monitor "DisplayPort-9"
+ #  DefaultDepth 24
+ #  SubSection "Display"
+ #    Depth 24
+ #    Modes "2560x1440"
+ #  EndSubSection
+# EndSection
+ #    '';
+ #  };
 
 # Some programs need SUID wrappers, can be configured further or are
 # started in user sessions.
@@ -272,9 +309,11 @@ EndSection
 # this value at the release version of the first install of this system.
 # Before changing this value read the documentation for this option
 # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-	system.stateVersion = "24.05"; # Did you read the comment?
 
+	system.stateVersion = "24.11"; # Did you read the comment?
 	nix.settings.experimental-features = [ "nix-command" "flakes"];
+
+	# services
 
 	services.logind.lidSwitch = "ignore";
 	services.logind.lidSwitchExternalPower= "ignore";

@@ -10,9 +10,6 @@
 		home-manager.url = "github:nix-community/home-manager/release-24.11";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 		spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-		# wezterm = {
-		# 	url = "github:wez/wezterm?dir=nix";
-		# };
 		ghostty = {
 			url = "github:ghostty-org/ghostty";
 		};
@@ -25,7 +22,6 @@
 				home-manager,
 				spicetify-nix,
 				nixpkgs-master,
-				# wezterm,
 				ghostty,
 				... }:
 		let
@@ -37,7 +33,6 @@
 				nixos = lib.nixosSystem {
 					inherit system;
 					specialArgs = {
-						# inherit wezterm;
 						inherit ghostty;
 					};
 					modules = [ 

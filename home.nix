@@ -23,12 +23,13 @@
 # environment.
 	home.packages =  with pkgs; [
 
+		# messages
+		nixpkgsUnstable.signal-desktop
+
+		# spotify
 		spicetify-cli
-		neovim
-		lazygit
-		# wezterm
-		oh-my-posh
-# lsps
+
+		# lsps
 		nil # nix lsp
 		unixODBC
 		luajitPackages.lua-lsp
@@ -39,9 +40,7 @@
 		#nixpkgsUnstable.erlang-ls this is for now installed manually because the current version is behind erlang 27
 		nixpkgsMaster.beam.packages.erlang_27.erlang-ls
 		nixpkgsUnstable.erlang_27
-		# nixpkgsUnstable.wezterm
 		nixpkgsUnstable.beam.packages.erlang_27.rebar3
-		nixpkgsUnstable.signal-desktop
 		#nixpkgsUnstable.elixir-ls
 
 # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -107,7 +106,6 @@
 	home.pointerCursor.size = 24;
 	home.pointerCursor.name = "catppuccin-mocha-red-cursors";
 	home.sessionVariables = {
-# EDITOR = "emacs";
 	};
 	gtk = {
 		enable = true;
