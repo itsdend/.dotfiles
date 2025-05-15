@@ -188,10 +188,10 @@ services.displayManager.sddm.settings = {
 		networkmanagerapplet
 
 		# random
-		swww
-		libstdcxx5
-		xorg.xrandr
-		xsettingsd
+		swww 				# dynamic wallpapers
+		libstdcxx5 			# c++ compiler
+		xorg.xrandr 		# screen res
+		xsettingsd 			# x11 graphical envs 
 		
 		# sound
 		pavucontrol
@@ -210,8 +210,8 @@ services.displayManager.sddm.settings = {
 
 		# hyprstuff
 		hyprpaper
-		hyprlock
-		hyprcursor
+		hyprlock 			# lock screen
+		hyprcursor			# cursor
 
 		# themes
 		catppuccin-cursors.mochaRed
@@ -221,7 +221,7 @@ services.displayManager.sddm.settings = {
 		qmk
 		via
 	
-		# e mails
+		# e-mails
 		thunderbird
 
 		# notify
@@ -231,10 +231,10 @@ services.displayManager.sddm.settings = {
 		# dev tools
 		wireshark
 		devbox
-		libsecret
+		libsecret 			# secure pass manage
 		git
-		wget
-		ibus
+		wget				
+		ibus				# input method
 		lazygit
 		ripgrep
 
@@ -260,29 +260,11 @@ services.displayManager.sddm.settings = {
 	hardware.graphics = {
 		enable = true;
 	};
+
+	# keyboard
 	hardware.keyboard.qmk.enable = true;
 	services.udev.packages = [pkgs.via];
 
-# TODO
- # environment.etc."X11/xorg.conf.d/20-monitor.conf" = {
- #    text = ''
-
-# Section "Monitor"
- #  Identifier "DisplayPort-9"
- #  Modeline "2560x1440" 241.50  2560 2720 2992 3424  1440 1443 1453 1481 -hsync +vsync
-# EndSection
-
-# Section "Screen"
- #  Identifier "Screen0"
- #  Monitor "DisplayPort-9"
- #  DefaultDepth 24
- #  SubSection "Display"
- #    Depth 24
- #    Modes "2560x1440"
- #  EndSubSection
-# EndSection
- #    '';
- #  };
 
 # Some programs need SUID wrappers, can be configured further or are
 # started in user sessions.

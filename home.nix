@@ -15,13 +15,18 @@
 # You should not change this value, even if you update Home Manager. If you do
 # want to update the value, then make sure to first check the Home Manager
 # release notes.
-	home.stateVersion = "24.05"; # Please read the comment before changing.
+	home.stateVersion = "24.11"; # Please read the comment before changing.
 
 #wayland.windowManager.hyperland.enable = true;
 
 # The home.packages option allows you to install Nix packages into your
 # environment.
 	home.packages =  with pkgs; [
+
+		libsForQt5.qt5ct
+		kdePackages.qt6ct
+		libsForQt5.qtstyleplugin-kvantum
+		qt6Packages.qtstyleplugin-kvantum
 
 		# messages
 		nixpkgsUnstable.signal-desktop
@@ -60,10 +65,6 @@
 # Home Manager is pretty good at managing dotfiles. The primary way to manage
 # plain files is through 'home.file'.
 	home.file = {
-# # Building this configuration will create a copy of 'dotfiles/screenrc' in
-# # the Nix store. Activating the configuration will then make '~/.screenrc' a
-# # symlink to the Nix store copy.
-# ".screenrc".source = dotfiles/screenrc;
 		".config/kitty/kitty.conf".source = "${./termulator/kitty/kitty.conf}";
 		".config/mako/config".source = "${./mako/config}";
 		".wezterm.lua".source = "${./termulator/wezterm/wezterm.lua}";
@@ -76,7 +77,6 @@
 		".config/waybar/style.css".source = "${./status/waybar/style.css}";
 		".config/erlang_ls/erlang_ls.config".source = "${./lsp/erlang_ls.config}";
 		".config/xsettingsd/xsettingsd.conf".source = "${./xda_apps/xsettingsd.conf}";
-# ".bashrc".source = "{userDotfiles.bsh}/.bachrc";
 
 # # You can also set the file content immediately.
 # ".gradle/gradle.properties".text = ''
@@ -101,13 +101,17 @@
 #
 #  /etc/profiles/per-user/marko/etc/profile.d/hm-session-vars.sh
 #
+
+	# cursors
 	home.pointerCursor.gtk.enable = true;
 	home.pointerCursor.package = pkgs.catppuccin-cursors.mochaRed;
 	home.pointerCursor.size = 24;
 	home.pointerCursor.name = "catppuccin-mocha-red-cursors";
-	home.sessionVariables = {
-	};
-	gtk = {
+
+	# gtk config
+	home.sessionVariables = {};
+	# change gtk to gtkcursotTheme.....
+	gtk = { 
 		enable = true;
 		gtk3.extraConfig = {
 			gtk-application-prefer-dark-theme=1;
@@ -131,8 +135,27 @@
 			package = (pkgs.catppuccin-papirus-folders.override { flavor = "mocha"; accent = "peach"; });
 			name  = "Papirus-Dark";
 		};
+		theme  = {
+			package = (pkgs.catppuccin-gtk.override { variant = "mocha"; accents = ["red"];});
+			name = "catppuccin-mocha-red-standard";
+		};
+		cursorTheme = {
+			package = (pkgs.catppuccin-cursors.mochaRed);
+			size = 24;
+			name =  "catppuccin-mocha-red-cursors";
+		};
+	};
+	qt = {
+		enable = true;
+		style = {
+			package = (pkgs.catppuccin-kvantum.override {variant = "mocha"; accent = "red";});
+			name = "kvantum";
+
+		};
 	};
 
+	# bash settings
+	programs.bash.enable = true;
 	programs.bash.bashrcExtra = "eval \"$(oh-my-posh init bash --config ~/.dotfiles/ohmyposh/larserikfinhold.omp.json)\"
 		export XCURSOR_THEME=\"catppuccin-mocha-red-cursors\"
 		export PATH=\"$PATH:$HOME/projects/open-source/nixpkgs/result/bin\"
@@ -141,6 +164,7 @@
 		export XMODIFIERS=\"@im=fcitx5\"
 		export SDL_IM_MODULE=fcitx5
 		export GLFW_IM_MODULE=fcitx5
+		export QT_QPA_PLATFORMTHEME=qt6ct
 		set -o vi
 		export EDITOR=nvim
 		";
@@ -150,7 +174,6 @@
 		# add this in bash for git built erlang_ls
 	#export PATH=\"$HOME/LSP/bin:$PATH\"
 
-	programs.bash.enable = true;
 # Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;
 }
