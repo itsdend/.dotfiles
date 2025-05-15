@@ -43,6 +43,7 @@
 #window,
 #tooltip,
 #workspaces
+#custom-mic
 
 #cpu {
     border: 2px solid #7ac3ff; /* Combine width, style, and color */
@@ -66,6 +67,16 @@
 }
 
 #clock {
+    border: 2px solid #eb87b6; /* Combine width, style, and color */
+    color: #eb87b6;
+	border-right: none;
+	border-left: none;
+	padding: 0rem 0rem 0rem 1rem;
+	border-radius: 0rem 0rem 0rem 0rem;
+	background: rgba(36, 39, 58, 0.6);
+}
+
+#custom-mic {
     border: 2px solid #eb87b6; /* Combine width, style, and color */
     color: #eb87b6;
 	border-left: none;
