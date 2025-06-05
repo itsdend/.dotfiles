@@ -148,6 +148,7 @@
 
 		# common tools
 		wl-clipboard
+		cliphist
 		zip
 		unzip
 		];

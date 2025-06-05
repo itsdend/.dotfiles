@@ -20,6 +20,14 @@
 # Plasma enable
 	# services.desktopManager.plasma6.enable = true;
 
+	programs.kdeconnect.enable = true;
+	programs.kdeconnect.package = pkgs.kdePackages.kdeconnect-kde;
+	# services.kdeconnect = {
+	# 	enable = true;
+	# 	package = pkgs.kdePackages.kdeconnect-kde;
+	# 	indicator = true;
+	# };
+
 # ly login
 	services.displayManager.ly.enable = true;
 	services.displayManager.ly.settings = { 
@@ -55,6 +63,7 @@
 		enable = true;
 		extraPortals = [
 						pkgs.xdg-desktop-portal-gtk
+						pkgs.xdg-desktop-portal-kde
 						pkgs.xdg-desktop-portal-hyprland
 						];
 		config = {
