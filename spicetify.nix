@@ -1,6 +1,6 @@
-{ pkgs, lib, spicetify-nix, ... }:
+{ pkgs,nixpkgsUnstable, lib, spicetify-nix, ... }:
 let
-spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
+spicePkgs = spicetify-nix.legacyPackages.${nixpkgsUnstable.system};
 in
 {
 # allow spotify to be installed if you don't have unfree enabled already
@@ -17,6 +17,9 @@ in
 		enable = true;
 		theme = spicePkgs.themes.catppuccin;
 		colorScheme = "mocha";
+
+		spicetifyPackage = nixpkgsUnstable.spicetify-cli;
+		spotifyPackage = nixpkgsUnstable.spotify;
 
 		enabledExtensions = with spicePkgs.extensions; [
 			keyboardShortcut

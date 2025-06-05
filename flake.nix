@@ -9,7 +9,7 @@
 		nixpkgs-master.url = "github:NixOs/nixpkgs/master";
 
 		# app flakes
-		spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+		spicetify-nix.url = "github:Gerg-L/spicetify-nix/";
 		ghostty = { url = "github:ghostty-org/ghostty"; }; 
 
 	};
@@ -49,11 +49,11 @@
 					inherit spicetify-nix;
 					nixpkgsUnstable = import nixpkgs-unstable{
 						inherit system;
-						config.allofUnfree = true;
+						config.allowUnfree = true;
 					};
 					nixpkgsMaster = import nixpkgs-master{
 						inherit system;
-						config.allofUnfree = true;
+						config.allowUnfree = true;
 					};
 				};
 				modules = [

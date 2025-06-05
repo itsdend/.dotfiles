@@ -57,6 +57,8 @@
 		# browsers
 		vivaldi
 
+		nixpkgsUnstable.spicetify-cli
+
 		# login
 		(catppuccin-sddm.override {
 			 flavor = "mocha";
