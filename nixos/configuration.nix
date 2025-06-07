@@ -115,6 +115,7 @@
 		hyprpaper
 		hyprlock 			# lock screen
 		hyprcursor			# cursor
+		hyprpolkitagent
 
 		# themes
 		catppuccin-cursors.mochaRed

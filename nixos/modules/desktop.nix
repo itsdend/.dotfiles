@@ -55,6 +55,9 @@
 		enable = true;
 		xwayland.enable = true;
 	};
+
+	security.polkit.enable = true;
+
 	programs.waybar.enable = true;
 
 # Wayland & X11 env fixes
