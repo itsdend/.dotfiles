@@ -17,16 +17,11 @@
 	services.dbus.enable = true;
 	services.power-profiles-daemon.enable = true;
 
-# Plasma enable
-	# services.desktopManager.plasma6.enable = true;
-
+# Mobile connect
 	programs.kdeconnect.enable = true;
 	programs.kdeconnect.package = pkgs.kdePackages.kdeconnect-kde;
-	# services.kdeconnect = {
-	# 	enable = true;
-	# 	package = pkgs.kdePackages.kdeconnect-kde;
-	# 	indicator = true;
-	# };
+
+# LOGIN MANAGERS
 
 # ly login
 	services.displayManager.ly.enable = true;
@@ -49,7 +44,9 @@
 		};
 		theme="catppuccin-mocha";
 	};
+
 	services.displayManager.defaultSession = "hyprland";
+
 # Hyprland 
 	programs.hyprland = {
 		enable = true;
