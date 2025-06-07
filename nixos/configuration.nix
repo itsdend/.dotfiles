@@ -1,4 +1,4 @@
-{ config, pkgs,ghostty,nixpkgsUnstable, ... }:
+{ pkgs,ghostty,nixpkgsUnstable, ... }:
 
 {
 	imports =
@@ -105,8 +105,11 @@
 		ripgrep
 
 		# editors
-		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+		vim
 		neovim
+
+		# Docs edit
+		libreoffice
 		
 		# system info
 		fastfetch
