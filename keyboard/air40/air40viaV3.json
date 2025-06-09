@@ -6,7 +6,7 @@
 		"qmk_lighting"
 	  ],
 	  "menus": [
-		"qmk_backlight_rgblight"
+		"qmk_rgb_matrix"
 	  ],
     "matrix": {
       "rows": 4,
