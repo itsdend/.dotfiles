@@ -10,7 +10,7 @@
 
 		packages =  with pkgs; [
 			# spotify
-			spicetify-cli
+			# spicetify-cli
 			];
 
 		file = {

@@ -40,6 +40,7 @@
 				./nixos/modules/core.nix
 				./nixos/modules/desktop.nix
 				./nixos/modules/users.nix
+				./spicetify.nix
 			] ++ extraModules;
 
 		in {
@@ -47,6 +48,7 @@
 				nixos = lib.nixosSystem {
 					inherit system;
 					specialArgs = {
+						inherit spicetify-nix;
 						inherit ghostty;
 						nixpkgsUnstable = nixpkgsUnstablePkgs;
 						nixpkgsMaster = nixpkgsMasterPkgs;
@@ -60,12 +62,10 @@
 			marko = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 				extraSpecialArgs = {
-					inherit spicetify-nix;
 					nixpkgsUnstable = nixpkgsUnstablePkgs;
 				};
 				modules = [
 					./home.nix
-					./spicetify.nix
 				];
 			};
 		};

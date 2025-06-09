@@ -23,7 +23,7 @@
 		nixpkgsUnstable.signal-desktop
 
 
-		nixpkgsUnstable.spicetify-cli
+		# nixpkgsUnstable.spicetify-cli
 
 		# login
 		(catppuccin-sddm.override {
