@@ -1,13 +1,13 @@
 { pkgs,ghostty,nixpkgsUnstable, ... }:
 
 {
-	imports =
-		[ # Include the results of the hardware scan.
-		./hardware-configuration.nix
-		./modules/core.nix
-		./modules/desktop.nix
-		./modules/users.nix
-		];
+	# imports =
+	# 	[ # Include the results of the hardware scan.
+	# 	./hardware-configuration.nix
+	# 	./modules/core.nix
+	# 	./modules/desktop.nix
+	# 	./modules/users.nix
+	# 	];
 
 	environment.systemPackages = with pkgs; [
 

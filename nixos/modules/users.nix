@@ -2,19 +2,22 @@
 
 {
 # Users
-	users.users.marko = {
-		isNormalUser = true;
-		description = "marko";
-		extraGroups = [ "networkmanager" "wheel" "wireshark"];
+	users = {
+		users.marko = {
+			isNormalUser = true;
+			description = "marko";
+			extraGroups = [ "networkmanager" "wheel" "wireshark"];
+		};
+		defaultUserShell = pkgs.bash;
 	};
 
 # Programs that require user permissions
-	programs.wireshark.enable = true;
+	programs = {
+		wireshark.enable = true;
+		firefox.enable = true;
+	};
 
-# Install firefox.
-	programs.firefox.enable = true;
 
 # Shell
 	environment.shells = with pkgs; [ bash ];
-	users.defaultUserShell = pkgs.bash;
 }

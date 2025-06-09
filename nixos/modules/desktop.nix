@@ -4,7 +4,7 @@
 
 # Enable the X11 windowing system.
 	services.xserver.enable = true;
-	services.xserver.displayManager.sddm.wayland.enable = false; # TODO sddm
+	services.displayManager.sddm.wayland.enable = false;
 
 # Video drivers & graphics
 	services.xserver.videoDrivers = ["amdgpu"];

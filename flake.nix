@@ -17,29 +17,42 @@
 	outputs = { self, 
 				nixpkgs, 
 				nixpkgs-unstable,
+				nixpkgs-master,
 				home-manager,
 				spicetify-nix,
-				nixpkgs-master,
 				ghostty,
 				... }:
 		let
 			lib = nixpkgs.lib;
 			system = "x86_64-linux";
 			pkgs = nixpkgs.legacyPackages.${system};
+			nixpkgsUnstablePkgs = import nixpkgs-unstable{
+				inherit system;
+				config.allowUnfree = true;
+			};
+			nixpkgsMasterPkgs = import nixpkgs-master{
+				inherit system;
+				config.allowUnfree = true;
+			};
+			get_modules = {hardwareConfig, extraModules ? []} : [
+				hardwareConfig
+				./nixos/configuration.nix
+				./nixos/modules/core.nix
+				./nixos/modules/desktop.nix
+				./nixos/modules/users.nix
+			] ++ extraModules;
+
 		in {
 			nixosConfigurations = {
 				nixos = lib.nixosSystem {
 					inherit system;
 					specialArgs = {
 						inherit ghostty;
-						nixpkgsUnstable = import nixpkgs-unstable {
-							inherit system;
-							config.allowUnfree = true;
-						};
+						nixpkgsUnstable = nixpkgsUnstablePkgs;
 					};
-					modules = [ 
-						./nixos/configuration.nix
-					];
+					modules = get_modules {
+						hardwareConfig = ./nixos/hardware-configuration.nix;
+					};
 				};
 			};
 		homeConfigurations = {
@@ -47,14 +60,8 @@
 				inherit pkgs;
 				extraSpecialArgs = {
 					inherit spicetify-nix;
-					nixpkgsUnstable = import nixpkgs-unstable{
-						inherit system;
-						config.allowUnfree = true;
-					};
-					nixpkgsMaster = import nixpkgs-master{
-						inherit system;
-						config.allowUnfree = true;
-					};
+					nixpkgsUnstable = nixpkgsUnstablePkgs;
+					nixpkgsMaster = nixpkgsMasterPkgs;
 				};
 				modules = [
 					./home.nix
