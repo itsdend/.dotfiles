@@ -1,5 +1,6 @@
-{ config, pkgs,nixpkgsUnstable,nixpkgsMaster, ... }:
- {
+{ pkgs,nixpkgsUnstable,nixpkgsMaster, ... }:
+
+{
 
 
 # Home Manager needs a bit of information about you and the paths it should
@@ -115,12 +116,12 @@
 		enable = true;
 		gtk3.extraConfig = {
 			gtk-application-prefer-dark-theme=1;
-			gtk-decoration-layout=icon:minimize,maximize,close;
+			gtk-decoration-layout="icon:minimize,maximize,close";
 			gtk-im-module="fcitx";
 		};
 		gtk4.extraConfig = {
 			gtk-application-prefer-dark-theme=1;
-			gtk-decoration-layout=icon:minimize,maximize,close;
+			gtk-decoration-layout="icon:minimize,maximize,close";
 			gtk-im-module="fcitx";
 		};
 		gtk2.extraConfig = 
