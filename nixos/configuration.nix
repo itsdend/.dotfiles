@@ -1,4 +1,4 @@
-{ pkgs,ghostty,nixpkgsUnstable, ... }:
+{ pkgs,ghostty,nixpkgsUnstable,nixpkgsMaster, ... }:
 
 {
 	# imports =
@@ -18,6 +18,10 @@
 
 		# browsers
 		vivaldi
+
+		# messages
+		nixpkgsUnstable.signal-desktop
+
 
 		nixpkgsUnstable.spicetify-cli
 
@@ -72,6 +76,17 @@
 		nil
 		lua-language-server
 		gcc
+		unixODBC
+		luajitPackages.lua-lsp
+		clang-tools
+		clang
+		cmake
+		boost
+		#nixpkgsUnstable.erlang-ls this is for now installed manually because the current version is behind erlang 27
+		nixpkgsMaster.beam.packages.erlang_27.erlang-ls
+		nixpkgsUnstable.erlang_27
+		nixpkgsUnstable.beam.packages.erlang_27.rebar3
+		#nixpkgsUnstable.elixir-ls
 
 		# hyprstuff
 		hyprpaper
@@ -113,6 +128,12 @@
 		
 		# system info
 		fastfetch
+
+		# qt
+		libsForQt5.qt5ct
+		kdePackages.qt6ct
+		libsForQt5.qtstyleplugin-kvantum
+		qt6Packages.qtstyleplugin-kvantum
 
 		# common tools
 		wl-clipboard

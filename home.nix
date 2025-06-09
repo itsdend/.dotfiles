@@ -1,4 +1,4 @@
-{ pkgs,nixpkgsUnstable,nixpkgsMaster, ... }:
+{ pkgs,nixpkgsUnstable, ... }:
 
 {
 	home= { 
@@ -9,29 +9,8 @@
 		stateVersion = "24.11"; # Please read the comment before changing.
 
 		packages =  with pkgs; [
-			libsForQt5.qt5ct
-			kdePackages.qt6ct
-			libsForQt5.qtstyleplugin-kvantum
-			qt6Packages.qtstyleplugin-kvantum
-# messages
-			nixpkgsUnstable.signal-desktop
-
-# spotify
+			# spotify
 			spicetify-cli
-
-# lsps
-			nil # nix lsp
-			unixODBC
-			luajitPackages.lua-lsp
-			clang-tools
-			clang
-			cmake
-			boost
-#nixpkgsUnstable.erlang-ls this is for now installed manually because the current version is behind erlang 27
-			nixpkgsMaster.beam.packages.erlang_27.erlang-ls
-			nixpkgsUnstable.erlang_27
-			nixpkgsUnstable.beam.packages.erlang_27.rebar3
-#nixpkgsUnstable.elixir-ls
 			];
 
 		file = {

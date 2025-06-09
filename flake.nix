@@ -49,6 +49,7 @@
 					specialArgs = {
 						inherit ghostty;
 						nixpkgsUnstable = nixpkgsUnstablePkgs;
+						nixpkgsMaster = nixpkgsMasterPkgs;
 					};
 					modules = get_modules {
 						hardwareConfig = ./nixos/hardware-configuration.nix;
@@ -61,7 +62,6 @@
 				extraSpecialArgs = {
 					inherit spicetify-nix;
 					nixpkgsUnstable = nixpkgsUnstablePkgs;
-					nixpkgsMaster = nixpkgsMasterPkgs;
 				};
 				modules = [
 					./home.nix
