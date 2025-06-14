@@ -115,6 +115,7 @@
 		ibus				# input method
 		lazygit
 		ripgrep
+		fzf
 
 		# editors
 		vim
