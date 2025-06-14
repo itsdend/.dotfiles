@@ -8,11 +8,6 @@
 
 		stateVersion = "24.11"; # Please read the comment before changing.
 
-		packages =  with pkgs; [
-			# spotify
-			# spicetify-cli
-			];
-
 		file = {
 			".config/kitty/kitty.conf".source = "${./termulator/kitty/kitty.conf}";
 			".config/mako/config".source = "${./mako/config}";
