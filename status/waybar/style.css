@@ -45,6 +45,7 @@
 #workspaces
 #custom-notifs
 #custom-mic
+#custom-kdec
 
 #cpu {
     border: 2px solid #7ac3ff; /* Combine width, style, and color */
@@ -83,6 +84,16 @@
 	border-right: none;
 	border-left: none;
 	padding: 0rem 0rem 0rem 0rem;
+	border-radius: 0rem 0rem 0rem 0rem;
+	background: rgba(36, 39, 58, 0.6);
+}
+
+#custom-kdec {
+    border: 2px solid #4FC8B7; /* Combine width, style, and color */
+    color: #4FC8B7;
+	border-right: none;
+	border-left: none;
+	padding: 0rem 0rem 0rem 1rem;
 	border-radius: 0rem 0rem 0rem 0rem;
 	background: rgba(36, 39, 58, 0.6);
 }
