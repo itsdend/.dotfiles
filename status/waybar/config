@@ -3,12 +3,12 @@
 		"position": "top",
 		"margin-top": 10,
 		"height": 30,
-		"modules-left": ["cpu","memory"],
+		"modules-left": ["battery", "cpu", "memory"],
 		"modules-center": ["pulseaudio","clock", "custom/notifs", "custom/mic",],
-		"modules-right": ["battery", "custom/kdec", "bluetooth", "network", "hyprland/workspaces"],
+		"modules-right": ["custom/kdec", "bluetooth", "network", "hyprland/workspaces"],
 		"cpu": { 
 			"interval": 10, 
-			"format": "󰻠 {usage}%" 
+			"format": "󰻠 {usage} %" 
 		},
 		"memory": {
 			"interval": 30,

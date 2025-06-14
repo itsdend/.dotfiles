@@ -48,14 +48,22 @@
 #custom-kdec
 
 #cpu {
-    border: 2px solid #7ac3ff; /* Combine width, style, and color */
-    color: #7ac3ff;
+    border: 2px solid #D179EE; /* Combine width, style, and color */
+    color: #D179EE;
+	background: rgba(36, 39, 58, 0.6);
+	border-right: none;
+	padding: 0rem 0rem 0rem 1rem;
+	border-radius: 1rem 0rem 0rem 1rem;
 	background: rgba(36, 39, 58, 0.6);
 }
 
 #memory {
     border: 2px solid #D179EE; /* Combine width, style, and color */
     color: #D179EE;
+	background: rgba(36, 39, 58, 0.6);
+	border-left: none;
+	padding: 0rem 1rem 0rem 0rem;
+	border-radius: 0rem 1rem 1rem 0rem;
 	background: rgba(36, 39, 58, 0.6);
 }
 
@@ -92,9 +100,8 @@
     border: 2px solid #4FC8B7; /* Combine width, style, and color */
     color: #4FC8B7;
 	border-right: none;
-	border-left: none;
 	padding: 0rem 0rem 0rem 1rem;
-	border-radius: 0rem 0rem 0rem 0rem;
+	border-radius: 1rem 0rem 0rem 1rem;
 	background: rgba(36, 39, 58, 0.6);
 }
 
@@ -108,11 +115,10 @@
 }
 
 #battery {
-    border: 2px solid #4FC8B7; /* Combine width, style, and color */
-    color: #4FC8B7;
-	border-right: none;
-	padding: 0rem 0rem 0rem 1rem;
-	border-radius: 1rem 0rem 0rem 1rem;
+    border: 2px solid #7ac3ff; /* Combine width, style, and color */
+    color: #7ac3ff;
+	padding: 0rem 1rem 0rem 1rem;
+	border-radius: 1rem 1rem 1rem 1rem;
 	background: rgba(36, 39, 58, 0.6);
 }
 #bluetooth { 
