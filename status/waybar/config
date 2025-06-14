@@ -8,7 +8,7 @@
 		"modules-right": ["custom/kdec", "bluetooth", "network", "hyprland/workspaces"],
 		"cpu": { 
 			"interval": 10, 
-			"format": "󰻠 {usage} %" 
+			"format": "󰻠 {usage}%" 
 		},
 		"memory": {
 			"interval": 30,
