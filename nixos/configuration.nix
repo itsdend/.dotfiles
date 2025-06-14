@@ -22,9 +22,6 @@
 		# messages
 		nixpkgsUnstable.signal-desktop
 
-
-		# nixpkgsUnstable.spicetify-cli
-
 		# login
 		(catppuccin-sddm.override {
 			 flavor = "mocha";
@@ -140,6 +137,6 @@
 		cliphist
 		zip
 		unzip
+		jq
 		];
-
 }

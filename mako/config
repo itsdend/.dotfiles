@@ -10,3 +10,5 @@ height=200
 outer-margin=0,0,20
 margin=20
 default-timeout=5000
+[mode=do-not-disturb]
+invisible=1
