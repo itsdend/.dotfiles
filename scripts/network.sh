@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-# Get Wi-Fi list in terse mode with colon-separated fields: SSID:SIGNAL:SECURITY
+if command -v notify-send &>/dev/null; then
+	notify-send "󱛃	Scanning networks	󱛃" -t 10000 
+fi
+
 mapfile -t wifi_list < <(nmcli -t -f SSID,SIGNAL,RATE,SECURITY device wifi list --rescan yes)
 
 options=()
@@ -8,7 +11,6 @@ options=()
 for line in "${wifi_list[@]}"; do
   IFS=':' read -r ssid signal rate security <<< "$line"
 
-  # Skip empty SSID (hidden networks)
   [[ -z "$ssid" ]] && continue
 
   options+=("$ssid ($signal% @ $rate) [$security]|$ssid|$security")
