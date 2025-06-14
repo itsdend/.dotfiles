@@ -14,7 +14,7 @@ downloads=("$HOME/Downloads")
 wallpapers=("$HOME/.dotfiles/wallpapers")
 
 # Get filenames from those folders, one per line
-suggestions=$(find "${downloads[@]}" "${wallpapers[@]}" -type f -printf '%p\n' | sort -nr | cut -d' ' -f2-)
+suggestions=$(find "${downloads[@]}" "${wallpapers[@]}" -type f -printf '%T@ %p\n' | sort -nr | cut -d' ' -f2-)
 # input=$(fzf --prompt="Path or URL to send: ")
 
 input=$(echo -e "${suggestions}" | rofi -dmenu -i matching fuzzy -p "Path or URL to send:")
