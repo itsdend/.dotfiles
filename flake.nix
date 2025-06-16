@@ -40,6 +40,7 @@
 				./nixos/modules/core.nix
 				./nixos/modules/desktop.nix
 				./nixos/modules/users.nix
+				./nixos/modules/scripts.nix
 				./spicetify.nix
 			] ++ extraModules;
 

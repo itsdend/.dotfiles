@@ -5,6 +5,18 @@
 # Enable the X11 windowing system.
 	services.xserver.enable = true;
 	services.displayManager.sddm.wayland.enable = false;
+	services.greetd.enable = false;
+	services.greetd.settings = {
+		default_session = {
+			command = "greetd_inu";
+			user = "marko";
+		};
+	};
+
+	# environment.etc."greetd/greetd_inu.sh" = {
+	# 	source = ../../scripts/greetd_inu.sh;
+	# 	mode = "0755";
+	# };
 
 # Video drivers & graphics
 	services.xserver.videoDrivers = ["amdgpu"];
@@ -37,10 +49,10 @@
 	services.displayManager.sddm = {
 		enable = false;# TODO sddm
 		settings = {
-			Autologin = {
-				Session = "hyprland.desktop";
-				User = "marko";
-			};
+			# Autologin = {
+			# 	Session = "hyprland.desktop";
+			# 	User = "marko";
+			# };
 		};
 		theme="catppuccin-mocha";
 	};

@@ -30,7 +30,8 @@
 			 background = "${../wallpapers/mks_color_ver2.png}";
 			 loginBackground = false;
 		})
-		nixpkgsUnstable.ly
+		ly
+		greetd.tuigreet
 
 		# status bar
 		waybar
@@ -90,6 +91,7 @@
 		hyprlock 			# lock screen
 		hyprcursor			# cursor
 		hyprpolkitagent
+		pamtester
 
 		# themes
 		catppuccin-cursors.mochaRed
