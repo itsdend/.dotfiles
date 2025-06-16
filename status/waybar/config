@@ -48,7 +48,7 @@
 		},
 		"custom/mic": {
 			"return-type":"json",
-			"exec": "~/.dotfiles/scripts/mic.sh",
+			"exec": "mic",
 			"exec-on-event": true,
 			"format": " {}",
 			"on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle &&  pkill -RTMIN+8 waybar",
@@ -58,17 +58,17 @@
 		},
 		"custom/kdec": {
 			"return-type":"json",
-			"exec": "~/.dotfiles/scripts/waybar-kdeconnect.sh",
+			"exec": "waybar-kdeconnect",
 			"interval": 10,
 			"format": " {}",
 			"tooltip": false
 		},
 		"custom/notifs": {
 			"return-type":"json",
-			"exec": "~/.dotfiles/scripts/waybar-mako.sh",
+			"exec": "waybar-mako",
 			"exec-on-event": true,
 			"format": " {}",
-			"on-click": "~/.dotfiles/scripts/toggle-mako.sh &&  pkill -RTMIN+8 waybar",
+			"on-click": "toggle-mako &&  pkill -RTMIN+8 waybar",
 			"tooltip": false,
 			"signal": 8
 		},
