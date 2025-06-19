@@ -97,6 +97,8 @@
 				set -o vi
 				export EDITOR=nvim
 				";
+			initExtra = "";
+			profileExtra = "";
 # TODO nixpkgs/result/bin is used for erlang_ls 1.0.0, when that version come live delete line 130
 
 #export PATH=\"$HOME/nix/store/v6fmqcz4y2vpykiym0igd7n81g1bmxyz-erlang-ls-1.0.0/bin:$PATH\"

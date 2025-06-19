@@ -9,14 +9,46 @@
 	services.greetd.settings = {
 		default_session = {
 			command = "greetd_inu";
-			user = "marko";
+			user = "greeter";
 		};
 	};
 
-	# environment.etc."greetd/greetd_inu.sh" = {
-	# 	source = ../../scripts/greetd_inu.sh;
-	# 	mode = "0755";
-	# };
+
+	environment.etc."issue".text = "
+        #@@-                                       
+       @@@G@@@:              ▗▄▄▄▄    ▄▄▄▖         
+      .@@GGGGG@@@..           ▜███▙  ▟███▛         
+      .@@G#####GG@@@@:         ▜███▙▟███▛          
+      .@@G%####GGGG@@@@@@@@@@   ▜██████▛           
+      .@@GG####GGGGGG@@GGGGG@██▙ ▜████▛     ▟▙     
+      .%@GGG###GG@@@GGGGGGGGG███▙ ▜███▙    ▟██▙    
+       @@@GGGGGGG@@@@@@@GGGGG      ▜███▙  ▟███▛    
+       %@@G@@@@@@@@@@@@@@@@@G       ▜██▛ ▟███▛     
+       -@@@@@@@@@@@=* ...@@GG        ▜▛ ▟███▛      
+      :*%@@@@@@@@@- |X   @GGG          ▟██████████▙
+       #@@@@@@@@@@-     @GGGG         ▟███████████▛
+      *@@@@@@@@#######GGGGGGG        ▟███▛         
+    -:+@@@@@########&G#/            ▟███▛          
+     %@@@@@########G#/  XXXX       ▝▀▀▀▀           
+   .#@@@@@########G####\ `'  ████████████████▛     
+   =#%@@%#########G######\   ███████████████▛      
+     .@@# .:%################     ▜███▙            
+       .GG     :###########/       ▜███▙           
+       -%GGG    .#######/           ▜███▙          
+         +@GG:          _<###▘       ▀▀▀▘          
+         .%@@@@%.          ~#
+           +@@@@@#*%#:
+           :%@@@@@@@@#####%++
+            .=#@@@@@@@#######
+                =@@@@@@@@####
+                      ..::###
+					  Hyprland for entering hyprland desktop env
+";
+
+	environment.etc."greetd/greetd_inu.sh" = {
+		source = ../../scripts/greetd_inu.sh;
+		mode = "0755";
+	};
 
 # Video drivers & graphics
 	services.xserver.videoDrivers = ["amdgpu"];
@@ -40,6 +72,8 @@
 	services.displayManager.ly.settings = { 
 		vi_mode = true;
 		# bg = "0x0024273A";
+		border_fg = 6;
+		fg = 7;
 		# border_fg = "0x007AC3FF";
 		# fg = "0x00EB87B6";
 		# error_fg = "0x00FC50B4";

@@ -29,6 +29,8 @@ while true; do
   row_start=$(( (rows - box_height) / 4 ))
   col_start=$(( (cols - box_width) / 2 ))
 
+
+echo "Running as user: $(whoami)"
   # Draw box
   tput cup $row_start $col_start
   echo -ne "${PURPLE}┌$(printf '─%.0s' $(seq 1 $((box_width - 2))))┐"
@@ -148,7 +150,7 @@ done
   echo
 
   # Authenticate
-  if ! echo "$PASSWORD" | pamtester login "$USERNAME" authenticate > /dev/null 2>&1; then
+  if ! echo "$PASSWORD" |sudo pamtester login "$USERNAME" authenticate > /dev/null 2>&1; then
     fail_msg="Authentication failed"
     fail_pos=$(( content_col_start + (content_width - ${#fail_msg}) / 2 ))
     tput cup $((password_prompt_row + 1)) $fail_pos
@@ -158,6 +160,15 @@ done
   fi
 
   clear
-  export XDG_RUNTIME_DIR="/run/user/$(id -u "$USERNAME")"
-  exec sudo -u "$USERNAME" env XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" Hyprland
+  echo  "prosao prvi dio"
+  # export XDG_RUNTIME_DIR="/run/user/$(id -u "$USERNAME")"
+  # exec sudo -u "$USERNAME" env XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" Hyprland
+
+  # exec sudo -u "$USERNAME" login -fp "$USERNAME"
+  # sudo -u "$USERNAME" login -fp "$USERNAME" -- bash -l -c 'exec Hyprland'
+  # exec sudo -u "$USERNAME" login -fp "$USERNAME" -- bash -l -c 'exec Hyprland'
+  
+  # exec sudo login -p -f "$USERNAME"
+  machinectl shell "$USERNAME@" /etc/profiles/per-user/$USERNAME/bin/Hyprland
+  # -- bash -l -c 'exec Hyprland'
 done
