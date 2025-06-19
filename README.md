@@ -32,10 +32,14 @@
 >### generations delete
 >> #### NixOs
 >>> (sudo) nix-env --list-generations 
->>>
->>> (sudo) nix-collect-garbage -d
->>>
 >>> nix-env --delete-generations old
+>>>
+>>> sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+>>> sudo nix-env --delete-generations old --profile /nix/var/nix/profiles/system 
+>>>
+>>> (sudo) nix-collect-garbage -d  
+>>> and run config update the boot loader
+>>>
 >> #### HomeManager
 >>> home-manager generations
 >### Flake update
