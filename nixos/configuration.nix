@@ -81,9 +81,13 @@
 		cmake
 		boost
 		#nixpkgsUnstable.erlang-ls this is for now installed manually because the current version is behind erlang 27
-		nixpkgsMaster.beam.packages.erlang_27.erlang-ls
-		nixpkgsUnstable.erlang_27
-		nixpkgsUnstable.beam.packages.erlang_27.rebar3
+		# nixpkgsMaster.beam.packages.erlang_27.erlang-ls
+		# nixpkgsUnstable.erlang_27
+		# nixpkgsUnstable.beam.packages.erlang_27.rebar3
+		nixpkgsUnstable.beam27Packages.erlang
+		nixpkgsUnstable.beam27Packages.rebar3
+		nixpkgsUnstable.beam27Packages.erlang-ls
+
 		#nixpkgsUnstable.elixir-ls
 
 		# hyprstuff
