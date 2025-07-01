@@ -88,7 +88,7 @@
 				eval \"$(oh-my-posh init bash --config ~/.dotfiles/ohmyposh/larserikfinhold.omp.json)\"
 				export XCURSOR_THEME=\"catppuccin-mocha-red-cursors\"
 				export PATH=\"$PATH:$HOME/projects/open-source/nixpkgs/result/bin\"
-				export GTK_IM_MODULE=fcitx5
+				unset GTK_IM_MODULE
 				export QT_IM_MODULE=fcitx5
 				export XMODIFIERS=\"@im=fcitx5\"
 				export SDL_IM_MODULE=fcitx5
