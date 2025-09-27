@@ -14,6 +14,8 @@
 	};
 
 
+    services.udisks2.enable = true;
+
 	environment.etc."issue".text = "
         #@@-                                       
        @@@G@@@:              ▗▄▄▄▄    ▄▄▄▖         

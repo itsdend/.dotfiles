@@ -139,6 +139,10 @@
 		libsForQt5.qtstyleplugin-kvantum
 		qt6Packages.qtstyleplugin-kvantum
 
+		# external hdd
+		udisks2
+		exfatprogs
+
 		# common tools
 		wl-clipboard
 		cliphist
