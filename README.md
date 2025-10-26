@@ -39,6 +39,11 @@
 >>>
 >>> (sudo) nix-collect-garbage -d  
 >>> and run config update the boot loader
+>>> 
+>>> more agr full combo 
+>>> sudo nixos-rebuild list-generations
+>>> sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old
+>>> sudo nix-collect-garbage -d
 >>>
 >> #### HomeManager
 >>> home-manager generations

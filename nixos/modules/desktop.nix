@@ -1,9 +1,10 @@
-{ pkgs, ...}:
+{ pkgs, nixpkgsUnstable, ...}:
 
 {
 
 # Enable the X11 windowing system.
-	services.xserver.enable = true;
+	services.xserver.enable = false;
+	services.displayManager.enable = false;
 	services.displayManager.sddm.wayland.enable = false;
 	services.greetd.enable = false;
 	services.greetd.settings = {
@@ -70,7 +71,7 @@
 # LOGIN MANAGERS
 
 # ly login
-	services.displayManager.ly.enable = true;
+	services.displayManager.ly.enable = false;
 	services.displayManager.ly.settings = { 
 		vi_mode = true;
 		# bg = "0x0024273A";
@@ -85,10 +86,10 @@
 	services.displayManager.sddm = {
 		enable = false;# TODO sddm
 		settings = {
-			# Autologin = {
-			# 	Session = "hyprland.desktop";
-			# 	User = "marko";
-			# };
+			Autologin = {
+				Session = "hyprland.desktop";
+				User = "marko";
+			};
 		};
 		theme="catppuccin-mocha";
 	};
@@ -103,7 +104,7 @@
 
 	security.polkit.enable = true;
 
-	programs.waybar.enable = true;
+	programs.waybar.enable = false;
 
 # Wayland & X11 env fixes
 	environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
@@ -111,7 +112,7 @@
 		enable = true;
 		extraPortals = [
 						pkgs.xdg-desktop-portal-gtk
-						pkgs.xdg-desktop-portal-kde
+						pkgs.kdePackages.xdg-desktop-portal-kde
 						pkgs.xdg-desktop-portal-hyprland
 						];
 		config = {
@@ -162,7 +163,7 @@
 	hardware.keyboard.qmk.enable = true;
 	services.udev.packages = [pkgs.via];
 
-	fonts.packages = with pkgs; [
-		(nerdfonts.override { fonts = [ "ComicShannsMono" ]; })
+	fonts.packages = [
+		pkgs.nerd-fonts.comic-shanns-mono
 	];
 }

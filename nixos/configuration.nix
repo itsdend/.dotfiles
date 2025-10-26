@@ -43,7 +43,7 @@
 		wayland-utils
 
 		# terminals
-		wezterm 
+		nixpkgsUnstable.wezterm 
 		ghostty.packages.${pkgs.system}.default
 		kitty
 
@@ -56,7 +56,7 @@
 
 		# random
 		swww 				# dynamic wallpapers
-		libstdcxx5 			# c++ compiler
+		libgcc 			# c++ compiler
 		xorg.xrandr 		# screen res
 		xsettingsd 			# x11 graphical envs 
 		
@@ -84,14 +84,16 @@
 		# nixpkgsMaster.beam.packages.erlang_27.erlang-ls
 		# nixpkgsUnstable.erlang_27
 		# nixpkgsUnstable.beam.packages.erlang_27.rebar3
-		nixpkgsUnstable.beam27Packages.erlang
-		nixpkgsUnstable.beam27Packages.rebar3
-		nixpkgsUnstable.beam27Packages.erlang-ls
+		nixpkgsUnstable.beam28Packages.erlang
+		nixpkgsUnstable.beam28Packages.rebar3
+		# nixpkgsUnstable.beam28Packages.erlang-ls %% dok ne dode 28
+		beam27Packages.erlang-ls
 
 		#nixpkgsUnstable.elixir-ls
 
 		# hyprstuff
 		hyprpaper
+		nixpkgsUnstable.hyprland
 		hyprlock 			# lock screen
 		hyprcursor			# cursor
 		hyprpolkitagent
@@ -99,7 +101,7 @@
 
 		# themes
 		catppuccin-cursors.mochaRed
-		oh-my-posh
+		nixpkgsUnstable.oh-my-posh
 
 		# keyboard
 		qmk
@@ -126,6 +128,7 @@
 		# editors
 		vim
 		neovim
+		vscode
 
 		# Docs edit
 		libreoffice

@@ -122,6 +122,16 @@ config.keys = {
 		action = wezterm.action.ReloadConfiguration
 	},
 	{
+		key = 'z',
+		mods = 'LEADER',
+		action = wezterm.action.IncreaseFontSize
+	},
+	{
+		key = 'x',
+		mods = 'LEADER',
+		action = wezterm.action.DecreaseFontSize
+	},
+	{
 		key = 'r',
 		mods = 'LEADER|SHIFT',
 		action = wezterm.action.PromptInputLine	{
@@ -217,17 +227,17 @@ config.keys = {
 config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 420}) -- 547 default
 config.font_size = 13
 config.cell_width = 1.1
-wezterm.on('window-config-reloaded', function(window)
-	if wezterm.gui.screens().active.name == 'eDP-1' then
-		window:set_config_overrides({
-			font_size = 12.9
-		})
-	else
-		window:set_config_overrides({
-			font_size = 12.9
-		})
-	end
-end)
+-- wezterm.on('window-config-reloaded', function(window)
+-- 	if wezterm.gui.screens().active.name == 'eDP-1' then
+-- 		window:set_config_overrides({
+-- 			font_size = 19.4
+-- 		})
+-- 	else
+-- 		window:set_config_overrides({
+-- 			font_size = 12.9
+-- 		})
+-- 	end
+-- end)
 
 for _, gpu in ipairs(wezterm.gui.enumerate_gpus()) do
 	if gpu.backend == 'Vulkan' and gpu.device_type == 'IntegratedGpu' then
