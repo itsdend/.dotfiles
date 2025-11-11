@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+notify-send "Bluetooth" "Scanning for devices..."
+bluetoothctl &
+{ echo "scan on" 
+	sleep 8 
+	echo "scan off" 
+	echo "exit" 
+} | bluetoothctl
+
 # Get ALL devices known to bluetoothctl (not only paired)
 mapfile -t bt_devices < <(bluetoothctl devices | awk '{print $2}')
 
@@ -57,6 +65,7 @@ if [[ "$paired" == "no" ]]; then
 
     notify-send "Bluetooth" "Connecting to $name..."
     bluetoothctl connect "$mac_to_handle"
+    notify-send "Bluetooth" "Connection to $name successful"
 
     exit 0
 fi
