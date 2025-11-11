@@ -44,10 +44,30 @@ if [[ -z "$mac_to_handle" ]]; then
 fi
 
 status=$(get_bt_status "$mac_to_handle")
+paired=$(get_bt_paired "$mac_to_handle")
+name=$(get_bt_name "$mac_to_handle")
 
-# Toggle connection
-if [[ "$status" == "yes" ]]; then
-    bluetoothctl disconnect "$mac_to_handle"
-else
+# ---- AUTO PAIR + TRUST + CONNECT ----
+if [[ "$paired" == "no" ]]; then
+    notify-send "Bluetooth" "Pairing $name..."
+    bluetoothctl pair "$mac_to_handle"
+
+    notify-send "Bluetooth" "Trusting $name..."
+    bluetoothctl trust "$mac_to_handle"
+
+    notify-send "Bluetooth" "Connecting to $name..."
     bluetoothctl connect "$mac_to_handle"
+
+    exit 0
+fi
+
+# If paired → toggle connection state
+if [[ "$status" == "yes" ]]; then
+    notify-send "Bluetooth" "Disconnecting from $name"
+    bluetoothctl disconnect "$mac_to_handle"
+    notify-send "Bluetooth" "Connection to $name died"
+else
+    notify-send "Bluetooth" "Connecting to $name"
+    bluetoothctl connect "$mac_to_handle"
+    notify-send "Bluetooth" "Connection to $name successful"
 fi
