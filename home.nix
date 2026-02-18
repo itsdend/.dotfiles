@@ -85,7 +85,7 @@
 		bash = {
 			enable = true;
 			bashrcExtra = "
-				eval \"$(oh-my-posh init bash --config ~/.dotfiles/ohmyposh/larserikfinhold.omp.json)\"
+				eval \"$(oh-my-posh init bash --config ~/.config/inu_nix/themes/current/larserikfinhold.omp.json)\"
 				export XCURSOR_THEME=\"catppuccin-mocha-red-cursors\"
 				export PATH=\"$PATH:$HOME/projects/open-source/nixpkgs/result/bin\"
 				unset GTK_IM_MODULE

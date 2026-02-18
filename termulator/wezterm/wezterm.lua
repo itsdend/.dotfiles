@@ -8,38 +8,16 @@ config.default_workspace = "main"
 config.enable_wayland = true
 config.default_cursor_style = 'SteadyBlock'
 
+-- Resolve the current theme path
+local home = os.getenv("HOME")
+local theme_path = home .. "/.config/inu_nix/themes/current/wezterm.lua"
+
+-- Load the colors table from the theme
+local theme_colors = dofile(theme_path)
+
 -- colors
 config.window_background_opacity = 0.9
-config.colors = {
-	foreground = '#EB87B6',
-	background = '#24273A',
-
-	cursor_bg = '#FDFD96',
-	selection_bg = '#F825C3',
-
-	ansi = {
-		'#8A3868',
-		'#FC50B4',
-		'#4FC8B7',
-		'#F9E2AF',
-		'#7AC3FF',
-		'#D179EE',
-		'#F2D5CF',
-		'#699DAD'
-	},
-
-	brights = {
-		'#8A3868',
-		'#FC50B4',
-		'#4FC8B7',
-		'#F9E2AF',
-		'#7AC3FF',
-		'#D179EE',
-		'#F2D5CF',
-		'#699DAD'
-
-	}
-}
+config.colors = theme_colors.colors
 
 
 config.use_ime = true

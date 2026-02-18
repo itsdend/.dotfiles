@@ -1,9 +1,8 @@
+include=~/.config/inu_nix/themes/current/mako.ini
 anchor=bottom-right
 font=ComicShannsMono Nerd Font
 background-color=#24273AFF
-text-color=#EB87B6
 border-radius=10
-border-color=#EB87B6
 border-size=2
 width=400
 height=200

@@ -101,6 +101,7 @@
 
 		# themes
 		catppuccin-cursors.mochaRed
+		catppuccin-cursors.mochaMauve
 		nixpkgsUnstable.oh-my-posh
 
 		# keyboard
@@ -152,5 +153,16 @@
 		zip
 		unzip
 		jq
+		
+
+		mesa
+  		vulkan-tools
+  		vulkan-loader
+  		libva
+
+		erlang-language-platform
+
+		bolt
+		fwupd
 		];
 }

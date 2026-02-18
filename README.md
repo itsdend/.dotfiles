@@ -52,3 +52,10 @@
 >>>change versions in flake.nix
 >> manually update the standalone home-manager
 
+
+> dock problems
+boltctl list
+sudo boltctl authorize "uuid"
+permanently >>
+
+sudo boltctl enroll "uuid"
