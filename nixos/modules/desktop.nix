@@ -4,7 +4,7 @@
 
 # Enable the X11 windowing system.
 	services.xserver.enable = false;
-	services.displayManager.enable = false;
+	services.displayManager.enable = true;
 	services.displayManager.sddm.wayland.enable = false;
 	services.greetd.enable = false;
 	services.greetd.settings = {
@@ -71,7 +71,7 @@
 # LOGIN MANAGERS
 
 # ly login
-	services.displayManager.ly.enable = false;
+	services.displayManager.ly.enable = true;
 	services.displayManager.ly.settings = { 
 		vi_mode = true;
 		# bg = "0x0024273A";
@@ -95,6 +95,8 @@
 	};
 
 	services.displayManager.defaultSession = "hyprland";
+
+	programs.ssh.enableAskPassword = true;
 
 # Hyprland 
 	programs.hyprland = {
@@ -162,6 +164,8 @@
 	# keyboard
 	hardware.keyboard.qmk.enable = true;
 	services.udev.packages = [pkgs.via];
+
+	services.hardware.bolt.enable = true;
 
 	fonts.packages = [
 		pkgs.nerd-fonts.comic-shanns-mono

@@ -8,6 +8,13 @@
 		efi.canTouchEfiVariables = true;
 	};
 
+	boot.kernelPackages = pkgs.linuxPackages_latest;
+
+	boot.kernelParams = [
+		"amdgpu.dcdebugmask=0x10"
+			"usbcore.autosuspend=-1"
+		"amdgpu.dc_mst=1"
+	];
 # Hostname
 	networking = {
 		hostName = "nixos";
