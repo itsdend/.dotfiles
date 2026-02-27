@@ -15,6 +15,7 @@
 	programs = {
 		wireshark.enable = true;
 		firefox.enable = true;
+		nix-ld.enable = true;
 	};
 
 

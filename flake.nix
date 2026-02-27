@@ -2,10 +2,11 @@
 	description = "my first flake";
 
 	inputs = {
-		nixpkgs = {url = "github:NixOs/nixpkgs/nixos-25.05";}; # nix
-		home-manager.url = "github:nix-community/home-manager/release-25.05"; # home-manager
+		nixpkgs = {url = "github:NixOs/nixpkgs/nixos-25.11";}; # nix
+		home-manager.url = "github:nix-community/home-manager/release-25.11"; # home-manager
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 		nixpkgs-unstable.url = "github:NixOs/nixpkgs/nixos-unstable";
+		nixpkgs-old = {url = "github:NixOs/nixpkgs/nixos-25.05";}; # nix
 		nixpkgs-master.url = "github:NixOs/nixpkgs/master";
 
 		# app flakes
@@ -17,6 +18,7 @@
 	outputs = { self, 
 				nixpkgs, 
 				nixpkgs-unstable,
+				nixpkgs-old,
 				nixpkgs-master,
 				home-manager,
 				spicetify-nix,
@@ -27,6 +29,10 @@
 			system = "x86_64-linux";
 			pkgs = nixpkgs.legacyPackages.${system};
 			nixpkgsUnstablePkgs = import nixpkgs-unstable{
+				inherit system;
+				config.allowUnfree = true;
+			};
+			nixpkgsOldPkgs = import nixpkgs-old{
 				inherit system;
 				config.allowUnfree = true;
 			};
@@ -53,6 +59,7 @@
 						inherit ghostty;
 						nixpkgsUnstable = nixpkgsUnstablePkgs;
 						nixpkgsMaster = nixpkgsMasterPkgs;
+						nixpkgsOld = nixpkgsOldPkgs;
 					};
 					modules = get_modules {
 						hardwareConfig = ./nixos/hardware-configuration.nix;

@@ -74,12 +74,12 @@
 	services.displayManager.ly.enable = true;
 	services.displayManager.ly.settings = { 
 		vi_mode = true;
-		# bg = "0x0024273A";
-		border_fg = 6;
-		fg = 7;
-		# border_fg = "0x007AC3FF";
-		# fg = "0x00EB87B6";
-		# error_fg = "0x00FC50B4";
+		bg = "0x0024273A";
+		# border_fg = 6;
+		# fg = 7;
+		border_fg = "0x007AC3FF";
+		fg = "0x00EB87B6";
+		error_fg = "0x00FC50B4";
 	};
 
 # SDDM login
@@ -87,7 +87,7 @@
 		enable = false;# TODO sddm
 		settings = {
 			Autologin = {
-				Session = "hyprland.desktop";
+				Session = "start-hyprland.desktop";
 				User = "marko";
 			};
 		};
@@ -130,7 +130,7 @@
 
 # PipeWire audio
 	security.rtkit.enable = true;
-	hardware.pulseaudio.enable = false;
+	services.pulseaudio.enable = false;
 	services.pipewire = {
 	wireplumber.enable = true;
 		enable = true;
@@ -157,15 +157,16 @@
 	services.printing.enable = true;
 
 # Laptop behavior
-	services.logind.lidSwitch = "ignore";
-	services.logind.lidSwitchExternalPower= "ignore";
-	services.logind.lidSwitchDocked="ignore";
+	services.logind.settings.Login.HandleLidSwitch = "ignore";
+	services.logind.settings.Login.HandleLidSwitchExternalPower= "ignore";
+	services.logind.settings.Login.HandleLidSwitchDocked="ignore";
 
 	# keyboard
 	hardware.keyboard.qmk.enable = true;
 	services.udev.packages = [pkgs.via];
 
 	services.hardware.bolt.enable = true;
+
 
 	fonts.packages = [
 		pkgs.nerd-fonts.comic-shanns-mono

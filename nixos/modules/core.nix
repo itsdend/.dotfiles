@@ -58,5 +58,5 @@
 	nix.settings.experimental-features = [ "nix-command" "flakes"];
 
 # State version
-	system.stateVersion = "25.05"; # Did you read the comment?
+	system.stateVersion = "25.11"; # Did you read the comment?
 }

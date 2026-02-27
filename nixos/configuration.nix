@@ -1,4 +1,4 @@
-{ pkgs,ghostty,nixpkgsUnstable,nixpkgsMaster, ... }:
+{ pkgs,ghostty,nixpkgsUnstable,nixpkgsMaster,nixpkgsOld, ... }:
 
 {
 	# imports =
@@ -17,7 +17,7 @@
 		pulseaudio
 
 		# browsers
-		vivaldi
+		nixpkgsUnstable.vivaldi
 
 		# messages
 		nixpkgsUnstable.signal-desktop
@@ -31,20 +31,20 @@
 			 loginBackground = false;
 		})
 		ly
-		greetd.tuigreet
+		tuigreet
 
 		# status bar
 		waybar
 
 		# runner
-		rofi-wayland
+		rofi
 
 		# wayland
 		wayland-utils
 
 		# terminals
 		nixpkgsUnstable.wezterm 
-		ghostty.packages.${pkgs.system}.default
+		ghostty.packages.${system}.default
 		kitty
 
 		# sound
@@ -80,20 +80,13 @@
 		clang
 		cmake
 		boost
-		#nixpkgsUnstable.erlang-ls this is for now installed manually because the current version is behind erlang 27
-		# nixpkgsMaster.beam.packages.erlang_27.erlang-ls
-		# nixpkgsUnstable.erlang_27
-		# nixpkgsUnstable.beam.packages.erlang_27.rebar3
+		nixpkgsOld.beam27Packages.erlang-ls
 		nixpkgsUnstable.beam28Packages.erlang
 		nixpkgsUnstable.beam28Packages.rebar3
-		# nixpkgsUnstable.beam28Packages.erlang-ls %% dok ne dode 28
-		beam27Packages.erlang-ls
-
-		#nixpkgsUnstable.elixir-ls
 
 		# hyprstuff
 		hyprpaper
-		nixpkgsUnstable.hyprland
+		hyprland
 		hyprlock 			# lock screen
 		hyprcursor			# cursor
 		hyprpolkitagent
@@ -153,6 +146,8 @@
 		zip
 		unzip
 		jq
+		brightnessctl
+		inotify-tools
 		
 
 		mesa
@@ -160,7 +155,8 @@
   		vulkan-loader
   		libva
 
-		erlang-language-platform
+		nixpkgsUnstable.erlang-language-platform
+		nixpkgsUnstable.watchman
 
 		bolt
 		fwupd

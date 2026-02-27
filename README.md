@@ -11,7 +11,7 @@
 >>
 >> **Text editor** `neovim`
 >>
->> **DE** `khyprland and some hyprland utils`
+>> **DE** `hyprland and some hyprland utils`
 >>
 >> **E-mail** `thunderbird`
 >>
