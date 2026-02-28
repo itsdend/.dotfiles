@@ -109,7 +109,10 @@
 	programs.waybar.enable = false;
 
 # Wayland & X11 env fixes
-	environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
+	environment.sessionVariables = {
+		NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
+		QT_QPA_PLATFORMTHEME = "qt6ct";
+	};
 	xdg.portal = { 
 		enable = true;
 		extraPortals = [
@@ -132,7 +135,7 @@
 	security.rtkit.enable = true;
 	services.pulseaudio.enable = false;
 	services.pipewire = {
-	wireplumber.enable = true;
+		wireplumber.enable = true;
 		enable = true;
 		alsa.enable = true;
 		alsa.support32Bit = true;
@@ -155,6 +158,8 @@
 
 # Enable CUPS to print documents.
 	services.printing.enable = true;
+
+	services.upower.enable = true;
 
 # Laptop behavior
 	services.logind.settings.Login.HandleLidSwitch = "ignore";

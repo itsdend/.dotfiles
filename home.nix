@@ -41,17 +41,14 @@
 		gtk3.extraConfig = {
 			gtk-application-prefer-dark-theme=1;
 			gtk-decoration-layout="icon:minimize,maximize,close";
-			gtk-im-module="fcitx";
 		};
 		gtk4.extraConfig = {
 			gtk-application-prefer-dark-theme=1;
 			gtk-decoration-layout="icon:minimize,maximize,close";
-			gtk-im-module="fcitx";
 		};
 		gtk2.extraConfig = 
 			"gtk-application-prefer-dark-theme=1
 			gtk-decoration-layout = icon:minimize,maximize,close
-			gtk-im-module=\"fcitx\";
 			";
 		font = {
 			name = "ComicShannsMono Nerd Font bold 15";
@@ -88,12 +85,6 @@
 				eval \"$(oh-my-posh init bash --config ~/.config/inu_nix/themes/current/larserikfinhold.omp.json)\"
 				export XCURSOR_THEME=\"catppuccin-mocha-red-cursors\"
 				export PATH=\"$PATH:$HOME/projects/open-source/nixpkgs/result/bin\"
-				unset GTK_IM_MODULE
-				export QT_IM_MODULE=fcitx5
-				export XMODIFIERS=\"@im=fcitx5\"
-				export SDL_IM_MODULE=fcitx5
-				export GLFW_IM_MODULE=fcitx5
-				export QT_QPA_PLATFORMTHEME=qt6ct
 				set -o vi
 				export EDITOR=nvim
 				";
