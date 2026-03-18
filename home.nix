@@ -87,6 +87,8 @@
 				export PATH=\"$PATH:$HOME/projects/open-source/nixpkgs/result/bin\"
 				set -o vi
 				export EDITOR=nvim
+				
+
 				";
 			initExtra = "";
 			profileExtra = "";

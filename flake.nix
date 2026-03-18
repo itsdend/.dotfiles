@@ -71,6 +71,8 @@
 				inherit pkgs;
 				extraSpecialArgs = {
 					nixpkgsUnstable = nixpkgsUnstablePkgs;
+					nixpkgsMaster = nixpkgsMasterPkgs;
+					nixpkgsOld = nixpkgsOldPkgs;
 				};
 				modules = [
 					./home.nix

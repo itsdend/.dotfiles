@@ -2,54 +2,54 @@
   "lockfile_version": "1",
   "packages": {
     "github:NixOS/nixpkgs/nixpkgs-unstable": {
-      "last_modified": "2025-11-12T10:38:40Z",
-      "resolved": "github:NixOS/nixpkgs/91c9a64ce2a84e648d0cf9671274bb9c2fb9ba60?lastModified=1762943920&narHash=sha256-ITeH8GBpQTw9457ICZBddQEBjlXMmilML067q0e6vqY%3D"
+      "last_modified": "2026-02-27T06:27:13Z",
+      "resolved": "github:NixOS/nixpkgs/c0f3d81a7ddbc2b1332be0d8481a672b4f6004d6?lastModified=1772173633&narHash=sha256-MOH58F4AIbCkh6qlQcwMycyk5SWvsqnS%2FTCfnqDlpj4%3D"
     },
     "ngrok@latest": {
-      "last_modified": "2024-08-14T11:41:26Z",
-      "resolved": "github:NixOS/nixpkgs/0cb2fd7c59fed0cd82ef858cbcbdb552b9a33465#ngrok",
+      "last_modified": "2026-02-23T15:40:43Z",
+      "resolved": "github:NixOS/nixpkgs/80d901ec0377e19ac3f7bb8c035201e2e098cc97#ngrok",
       "source": "devbox-search",
-      "version": "3.14.0",
+      "version": "3.31.0",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/dx58zflgg82r4aw9kz1nqca96vzqhn3h-ngrok-3.14.0",
+              "path": "/nix/store/pkb2hk0msac2rhzlipvj4bm236sxq1jd-ngrok-3.31.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/dx58zflgg82r4aw9kz1nqca96vzqhn3h-ngrok-3.14.0"
+          "store_path": "/nix/store/pkb2hk0msac2rhzlipvj4bm236sxq1jd-ngrok-3.31.0"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/j7fdp3f6km1l3jcbyg47yz8y70rv98d4-ngrok-3.14.0",
+              "path": "/nix/store/m6dy3i3invlivrsm0mnd7f7g2jg357rg-ngrok-3.31.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/j7fdp3f6km1l3jcbyg47yz8y70rv98d4-ngrok-3.14.0"
+          "store_path": "/nix/store/m6dy3i3invlivrsm0mnd7f7g2jg357rg-ngrok-3.31.0"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/gqdm8j7qxkdzbdcjjy2qgww2bkg2lnc4-ngrok-3.14.0",
+              "path": "/nix/store/xccj083y0hkzgx1a6x58x2dldmhlja9y-ngrok-3.31.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/gqdm8j7qxkdzbdcjjy2qgww2bkg2lnc4-ngrok-3.14.0"
+          "store_path": "/nix/store/xccj083y0hkzgx1a6x58x2dldmhlja9y-ngrok-3.31.0"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/6n7x26mklykr66iyrpdn4ms2gh8j4r5r-ngrok-3.14.0",
+              "path": "/nix/store/50m2g2nkjrh3pv7crcq9g001yzhai0il-ngrok-3.31.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/6n7x26mklykr66iyrpdn4ms2gh8j4r5r-ngrok-3.14.0"
+          "store_path": "/nix/store/50m2g2nkjrh3pv7crcq9g001yzhai0il-ngrok-3.31.0"
         }
       }
     }

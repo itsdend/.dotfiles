@@ -30,13 +30,13 @@ get_icon_for_nick() {
 
   case "$nick" in
     *"VG32"*)
-      echo "🎵"
+      echo "🖥️"
       ;;
     *"H848"*|*"Wireless"*|*"Redragon"*)
-      echo "🔊"
+      echo "🎧"
       ;;
     *"ALC"*)
-      echo "laptop"
+      echo "💻"
       ;;
     *)
       echo "🔈"

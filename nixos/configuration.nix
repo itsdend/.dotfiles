@@ -81,8 +81,8 @@
 		cmake
 		boost
 		nixpkgsOld.beam27Packages.erlang-ls
-		nixpkgsUnstable.beam28Packages.erlang
-		nixpkgsUnstable.beam28Packages.rebar3
+		beam28Packages.erlang
+		beam28Packages.rebar3
 
 		# hyprstuff
 		hyprpaper
@@ -149,6 +149,10 @@
 		brightnessctl
 		inotify-tools
 		
+		
+		vips
+		glibc
+		file
 
 		mesa
   		vulkan-tools

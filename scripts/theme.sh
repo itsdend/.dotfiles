@@ -7,6 +7,7 @@ CURRENT_THEME_SYMLINK="$THEMES_DIR/current"
 
 # Ensure theme directory exists
 mkdir -p "$THEMES_DIR"
+mkdir -p "$HOME/.config/wezterm/themes/current"
 
 # Create default symlink if it doesn't exist
 if [ ! -L "$CURRENT_THEME_SYMLINK" ]; then
@@ -32,4 +33,12 @@ pkill waybar
 hyprctl dispatch exec waybar
 hyprctl reload
 makoctl reload
+# oh-my-posh enable reload
 
+# TEMP
+lid_state=$(awk '{print $2}' /proc/acpi/button/lid/LID/state)
+if [[ "$lid_state" == "closed" ]]; then
+	hyprctl keyword monitor "eDP-1, disable"
+else
+	hyprctl keyword monitor "eDP-1, highres, auto, 1"
+fi

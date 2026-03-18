@@ -16,6 +16,8 @@ environment.systemPackages = with pkgs; [
   (writeShellScriptBin "toggle-mako" (builtins.readFile ../../scripts/toggle-mako.sh))
   (writeShellScriptBin "waybar-kdeconnect" (builtins.readFile ../../scripts/waybar-kdeconnect.sh))
   (writeShellScriptBin "waybar-mako" (builtins.readFile ../../scripts/waybar-mako.sh))
+  (writeShellScriptBin "rofi_bluetooth" (builtins.readFile ../../scripts/bluetooth.sh))
+  (writeShellScriptBin "rofi_theme" (builtins.readFile ../../scripts/theme.sh))
   (writeShellScriptBin "rofi_mako_history" (builtins.readFile ../../scripts/rofi_mako_history.sh))
 ];
 }

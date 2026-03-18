@@ -7,11 +7,12 @@ end)
 config.default_workspace = "main"
 config.enable_wayland = true
 config.default_cursor_style = 'SteadyBlock'
+config.automatically_reload_config = true;
 
 -- Resolve the current theme path
 local home = os.getenv("HOME")
 local theme_path = home .. "/.config/inu_nix/themes/current/wezterm.lua"
-
+wezterm.add_to_config_reload_watch_list(home .. "/.config/inu_nix/themes/current/wezterm.lua")
 -- Load the colors table from the theme
 local theme_colors = dofile(theme_path)
 

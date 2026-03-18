@@ -74,12 +74,13 @@
 	services.displayManager.ly.enable = true;
 	services.displayManager.ly.settings = { 
 		vi_mode = true;
-		bg = "0x0024273A";
-		# border_fg = 6;
-		# fg = 7;
-		border_fg = "0x007AC3FF";
-		fg = "0x00EB87B6";
-		error_fg = "0x00FC50B4";
+		border_fg = 6;
+		fg = 7;
+		# full_color = true;
+		# bg = "0x0024273A";
+		# border_fg = "0x007AC3FF";
+		# fg = "0x00EB87B6";
+		# error_fg = "0x00FC50B4";
 	};
 
 # SDDM login
