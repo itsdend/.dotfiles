@@ -13,7 +13,9 @@
 	boot.kernelParams = [
 		"amdgpu.dcdebugmask=0x10"
 			"usbcore.autosuspend=-1"
-		"amdgpu.dc_mst=1"
+		# "amdgpu.mst=0"
+		"video=DP-10:2560x1440@164"
+		"video=DP-9:1920x1080@60"
 	];
 # Hostname
 	networking = {
