@@ -83,6 +83,7 @@
 		nixpkgsOld.beam27Packages.erlang-ls
 		beam28Packages.erlang
 		beam28Packages.rebar3
+		python313Packages.python-lsp-server
 
 		# hyprstuff
 		hyprpaper

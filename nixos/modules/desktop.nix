@@ -114,22 +114,36 @@
 		NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
 		QT_QPA_PLATFORMTHEME = "qt6ct";
 	};
-	xdg.portal = { 
-		enable = true;
-		extraPortals = [
-						pkgs.xdg-desktop-portal-gtk
-						pkgs.kdePackages.xdg-desktop-portal-kde
-						pkgs.xdg-desktop-portal-hyprland
-						];
-		config = {
-			common.default = ["gtk"];
-			hyprland.default = ["gtk" "hyprland"];
-		};
-	};
-	environment.variables = {
-		XCURSOR_THEME = "catppuccin-mocha-red-cursors";
-		XCURSOR_SIZE = "24";
-	};
+xdg.portal = {
+  enable = true;
+
+  extraPortals = [
+    pkgs.xdg-desktop-portal-hyprland
+    pkgs.xdg-desktop-portal-gtk
+  ];
+
+  config = {
+    common = {
+      default = [ "hyprland" "gtk" ];
+    };
+  };
+};
+	# xdg.portal = { 
+	# 	enable = true;
+	# 	extraPortals = [
+	# 					pkgs.xdg-desktop-portal-gtk
+	# 					pkgs.kdePackages.xdg-desktop-portal-kde
+	# 					pkgs.xdg-desktop-portal-hyprland
+	# 					];
+	# 	config = {
+	# 		common.default = ["gtk"];
+	# 		hyprland.default = ["gtk" "hyprland"];
+	# 	};
+	# };
+	# environment.variables = {
+	# 	XCURSOR_THEME = "catppuccin-mocha-red-cursors";
+	# 	XCURSOR_SIZE = "24";
+	# };
 
 
 # PipeWire audio
@@ -166,6 +180,8 @@
 	services.logind.settings.Login.HandleLidSwitch = "ignore";
 	services.logind.settings.Login.HandleLidSwitchExternalPower= "ignore";
 	services.logind.settings.Login.HandleLidSwitchDocked="ignore";
+
+	services.fwupd.enable = true;
 
 	# keyboard
 	hardware.keyboard.qmk.enable = true;
