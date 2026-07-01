@@ -2,8 +2,8 @@
 	description = "my first flake";
 
 	inputs = {
-		nixpkgs = {url = "github:NixOs/nixpkgs/nixos-25.11";}; # nix
-		home-manager.url = "github:nix-community/home-manager/release-25.11"; # home-manager
+		nixpkgs = {url = "github:NixOs/nixpkgs/nixos-26.05";}; # nix
+		home-manager.url = "github:nix-community/home-manager/release-26.05"; # home-manager
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 		nixpkgs-unstable.url = "github:NixOs/nixpkgs/nixos-unstable";
 		nixpkgs-old = {url = "github:NixOs/nixpkgs/nixos-25.05";}; # nix

@@ -55,9 +55,9 @@
 		networkmanagerapplet
 
 		# random
-		swww 				# dynamic wallpapers
+		awww 				# dynamic wallpapers
 		libgcc 			# c++ compiler
-		xorg.xrandr 		# screen res
+		xrandr 		# screen res
 		xsettingsd 			# x11 graphical envs 
 		
 		# sound
@@ -67,14 +67,14 @@
 		# lsp
 		nodejs_22
 		corepack_22
-		nodePackages_latest.bash-language-server
+		bash-language-server
 		vscode-langservers-extracted
 		vim-language-server
 		dot-language-server
 		nil
 		lua-language-server
 		gcc
-		unixODBC
+		unixodbc
 		luajitPackages.lua-lsp
 		clang-tools
 		clang
