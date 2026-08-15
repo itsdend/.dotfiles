@@ -6,7 +6,7 @@
 		users.marko = {
 			isNormalUser = true;
 			description = "marko";
-			extraGroups = [ "networkmanager" "wheel" "wireshark"];
+			extraGroups = [ "networkmanager" "wheel" "wireshark" "audio"];
 		};
 		defaultUserShell = pkgs.bash;
 	};

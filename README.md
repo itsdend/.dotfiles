@@ -59,3 +59,27 @@ sudo boltctl authorize "uuid"
 permanently >>
 
 sudo boltctl enroll "uuid"
+
+
+
+
+za zvuk slusalica 
+
+mkdir -p ~/.config/wireplumber/wireplumber.conf.d
+nano ~/.config/wireplumber/wireplumber.conf.d/52-h848.conf
+
+monitor.alsa.rules = [
+  {
+    matches = [
+      {
+        device.name = "~alsa_card.usb-XiiSound_Technology_Corporation_H848_Wireless_headset.*"
+      }
+    ]
+    actions = {
+      update-props = {
+        api.alsa.ignore-dB = true
+      }
+    }
+  }
+]
+

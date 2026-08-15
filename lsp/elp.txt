@@ -1,0 +1,35 @@
+
+==============================================================================
+vim.lsp:                                                                    ✅
+
+- LSP log level : WARN
+- Log path: /home/marko/.local/state/nvim/lsp.log
+- Log size: 64 KB
+
+vim.lsp: Active Clients ~
+- erlangls (id: 1)
+  - Version: 0.0.0
+  - Root directory: ~/projects/invariant/tw_unidb
+  - Command: { "erlang_ls" }
+  - Settings: vim.empty_dict()
+  - Attached buffers: 11
+- elp (id: 2)
+  - Version: 1.1.0+build-2026-01-15
+  - Root directory: ~/projects/invariant/tw_unidb
+  - Command: { "elp", "server" }
+  - Settings: {}
+  - Attached buffers: 11
+
+vim.lsp: Enabled Configurations ~
+- elp:
+  - cmd: { "elp", "server" }
+  - filetypes: erlang
+  - root_markers: { "rebar.config", "erlang.mk", ".git" }
+
+
+vim.lsp: File Watcher ~
+- File watch backend: inotify
+
+vim.lsp: Position Encodings ~
+- No buffers contain mixed position encodings
+

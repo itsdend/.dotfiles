@@ -4,7 +4,8 @@
 # Bootloader.
 	boot.loader = { 
 		systemd-boot.enable = true;
-		systemd-boot.consoleMode = "keep";
+        timeout = 10;
+		systemd-boot.consoleMode = "auto";
 		efi.canTouchEfiVariables = true;
 	};
 
@@ -63,5 +64,5 @@
 	nix.settings.experimental-features = [ "nix-command" "flakes"];
 
 # State version
-	system.stateVersion = "25.11"; # Did you read the comment?
+	system.stateVersion = "26.05"; # Did you read the comment?
 }

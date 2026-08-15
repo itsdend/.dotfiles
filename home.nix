@@ -6,7 +6,7 @@
 
 		homeDirectory = "/home/marko";
 
-		stateVersion = "25.11"; # Please read the comment before changing.
+		stateVersion = "26.05"; # Please read the comment before changing.
 
 		file = {
 			".config/kitty/kitty.conf".source = "${./termulator/kitty/kitty.conf}";
@@ -93,11 +93,6 @@
 				";
 			initExtra = "";
 			profileExtra = "";
-# TODO nixpkgs/result/bin is used for erlang_ls 1.0.0, when that version come live delete line 130
-
-#export PATH=\"$HOME/nix/store/v6fmqcz4y2vpykiym0igd7n81g1bmxyz-erlang-ls-1.0.0/bin:$PATH\"
-# add this in bash for git built erlang_ls
-#export PATH=\"$HOME/LSP/bin:$PATH\"
 		};
 		home-manager.enable = true;
 	};
