@@ -13,6 +13,11 @@
 		spicetify-nix.url = "github:Gerg-L/spicetify-nix/";
 		ghostty = { url = "github:ghostty-org/ghostty"; }; 
 
+        # dev shells flakes
+        erlang-shell.url = "path:./nixos/shells/erlang";
+        elixir-shell.url = "path:./nixos/shells/elixir";
+
+
 	};
 
 	outputs = { self, 
@@ -23,6 +28,8 @@
 				home-manager,
 				spicetify-nix,
 				ghostty,
+                elixir-shell,
+                erlang-shell,
 				... }:
 		let
 			lib = nixpkgs.lib;
@@ -66,18 +73,23 @@
 					};
 				};
 			};
-		homeConfigurations = {
-			marko = home-manager.lib.homeManagerConfiguration {
-				inherit pkgs;
-				extraSpecialArgs = {
-					nixpkgsUnstable = nixpkgsUnstablePkgs;
-					nixpkgsMaster = nixpkgsMasterPkgs;
-					nixpkgsOld = nixpkgsOldPkgs;
-				};
-				modules = [
-					./home.nix
-				];
-			};
-		};
-	};
+            homeConfigurations = {
+                marko = home-manager.lib.homeManagerConfiguration {
+                    inherit pkgs;
+                    extraSpecialArgs = {
+                        nixpkgsUnstable = nixpkgsUnstablePkgs;
+                        nixpkgsMaster = nixpkgsMasterPkgs;
+                        nixpkgsOld = nixpkgsOldPkgs;
+                    };
+                    modules = [
+                        ./home.nix
+                    ];
+                };
+            };
+            devShells.${system} = {
+                erlang = erlang-shell.devShells.${system}.default;
+                elixir = elixir-shell.devShells.${system}.default;
+            };
+
+        };
 }

@@ -82,10 +82,11 @@
 		clang
 		cmake
 		boost
-		nixpkgsOld.beam27Packages.erlang-ls
-		beam29Packages.erlang
-		beam29Packages.rebar3
+        markdown-oxide
+		# beam28Packages.erlang
+		# beam28Packages.rebar3
 		python313Packages.python-lsp-server
+        claude-code
 
 		# hyprstuff
 		hyprpaper
@@ -163,7 +164,7 @@
   		libva
 
 		# nixpkgsUnstable.erlang-language-platform
-        (pkgs.callPackage ./elp_latest.nix { })
+        # (pkgs.callPackage ./elp_latest.nix { })
 		nixpkgsUnstable.watchman
 
 		bolt
