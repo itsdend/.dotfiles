@@ -81,6 +81,10 @@
 	programs = {
 		bash = {
 			enable = true;
+			shellAliases = {
+				erlang-shell = "nix develop ~/.dotfiles#erlang";
+				elixir-shell = "nix develop ~/.dotfiles#elixir";
+			};
 			bashrcExtra = "
 				eval \"$(oh-my-posh init bash --config ~/.config/inu_nix/themes/current/larserikfinhold.omp.json)\"
 				export XCURSOR_THEME=\"catppuccin-mocha-red-cursors\"
