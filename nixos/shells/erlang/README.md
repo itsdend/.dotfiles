@@ -70,7 +70,57 @@ Nakon toga, `cd` u taj direktorij automatski aktivira shell (i deaktivira ga pri
 
   Ovo povlači najnoviji `nixos-unstable` commit i regenerira `flake.lock`. Commitaj promijenjeni `flake.lock` da svi u timu dobiju istu novu verziju.
 
-- Za update samo ELP-a, uredi `version` i `hash` u `elp_latest.nix` prema [najnovijem release-u](https://github.com/WhatsApp/erlang-language-platform/releases).
+- Za update samo ELP-a, pogledaj sekciju **Update ELP** ispod.
+
+## Update ELP
+
+ELP **nije** instaliran iz nixpkgs jer nixpkgs verzija zaostaje i imala je kompatibilnost problema s OTP 28. Umjesto toga, `elp_latest.nix` preuzima precompiled binarni release direktno s GitHuba i patchuje ga za NixOS (`autoPatchelfHook`).
+
+### Zašto ne nixpkgs
+
+nixpkgs ELP release ciklus kasni tjednima za upstream. Uz to, nixpkgs build ELP-a nije uvijek bio kompajliran za točno tu OTP verziju koja se koristi u shellu — što uzrokuje runtime greške. Ovim pristupom bira se točan binary koji WhatsApp objavi za `otp-28`.
+
+### Kako updateati ELP
+
+1. Provjeri [najnoviji release](https://github.com/WhatsApp/erlang-language-platform/releases) — pronađi datum (npr. `2026-09-01`)
+
+2. Provjeri postoji li binary za `otp-28` i `x86_64-linux`:
+   ```
+   elp-linux-x86_64-unknown-linux-gnu-otp-28.tar.gz
+   ```
+   Ako OTP verzija u shellu nije 28, URL treba prilagoditi (npr. `otp-27`).
+
+3. Dohvati novi hash:
+   ```bash
+   nix store prefetch-file --hash-type sha256 \
+     "https://github.com/WhatsApp/erlang-language-platform/releases/download/<novi-datum>/elp-linux-x86_64-unknown-linux-gnu-otp-28.tar.gz"
+   ```
+   Output će biti nešto poput:
+   ```
+   sha256-ABCD1234...=
+   ```
+
+4. Uredi `elp_latest.nix` — promijeni `version` i `hash`:
+   ```nix
+   version = "2026-09-01";  # novi datum
+
+   src = fetchurl {
+     url = "https://github.com/WhatsApp/erlang-language-platform/releases/download/${version}/elp-linux-x86_64-unknown-linux-gnu-otp-28.tar.gz";
+     hash = "sha256-ABCD1234...=";  # novi hash
+   };
+   ```
+
+5. Testiraj:
+   ```bash
+   nix develop
+   elp --version
+   ```
+
+6. Commitaj `elp_latest.nix`.
+
+### Ako se promijeni OTP verzija u shellu
+
+Ako `flake.nix` prebaci s `beam28Packages` na npr. `beam29Packages`, URL u `elp_latest.nix` treba promijeniti iz `otp-28` u `otp-29` (uz novi hash).
 
 ## Sistemski alati (LSP-ovi, editor pomagala, itd.)
 
