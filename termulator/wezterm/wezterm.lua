@@ -4,6 +4,54 @@ local config = wezterm.config_builder()
 wezterm.on('update-right-status', function(window, pane)
 	window:set_right_status(window:active_workspace())
 end)
+
+local claude_previous_tab_id = nil
+
+wezterm.on('claude-toggle', function(window, pane)
+	local mux_win = window:mux_window()
+	local tabs = mux_win:tabs()
+	local current_tab = mux_win:active_tab()
+	local current_tab_id = current_tab:tab_id()
+
+	local claude_tab = nil
+	for _, tab in ipairs(tabs) do
+		if tab:get_title() == 'claude' then
+			claude_tab = tab
+			break
+		end
+	end
+
+	if claude_tab == nil then
+		local user_vars = pane:get_user_vars()
+		local nix_shell = user_vars['NIX_SHELL']
+
+		local cmd
+		if nix_shell == 'erlang' then
+			cmd = { 'bash', '-c', 'nix develop ~/.dotfiles#erlang --command bash -c "claude; exec bash -i"' }
+		elseif nix_shell == 'elixir' then
+			cmd = { 'bash', '-c', 'nix develop ~/.dotfiles#elixir --command bash -c "claude; exec bash -i"' }
+		else
+			cmd = { 'bash', '-c', 'claude; exec bash -i' }
+		end
+
+		claude_previous_tab_id = current_tab_id
+		local new_tab, _, _ = mux_win:spawn_tab({ args = cmd })
+		new_tab:set_title('claude')
+
+	elseif claude_tab:tab_id() == current_tab_id then
+		if claude_previous_tab_id then
+			for _, tab in ipairs(tabs) do
+				if tab:tab_id() == claude_previous_tab_id then
+					tab:activate()
+					break
+				end
+			end
+		end
+	else
+		claude_previous_tab_id = current_tab_id
+		claude_tab:activate()
+	end
+end)
 config.default_workspace = "main"
 config.enable_wayland = true
 config.default_cursor_style = 'SteadyBlock'
@@ -184,6 +232,7 @@ config.keys = {
 				end),
 		},
 	},
+	{ key = 'y', mods = 'LEADER', action = wezterm.action.EmitEvent 'claude-toggle' },
 	{ key = 'f', mods = 'LEADER', action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES'},},
 	{ key = 'f', mods = 'LEADER|SHIFT', action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|TABS'},},
 	{ key = 'a', mods = 'LEADER', action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|DOMAINS' },},

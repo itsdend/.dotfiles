@@ -20,6 +20,8 @@
         ];
         shellHook = ''
           export PATH="$PATH:/run/current-system/sw/bin"
+          printf '\033]1337;SetUserVar=NIX_SHELL=%s\007' "$(printf 'elixir' | base64)"
+          trap 'printf "\033]1337;SetUserVar=NIX_SHELL=%s\007" "$(printf "" | base64)"' EXIT
         '';
       };
     };
