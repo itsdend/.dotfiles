@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-mapfile -t sinks < <(pactl list short sinks | awk '{print $2}')
+# sinkovi čiji je port "not available" (npr. HDMI izlazi bez spojenog monitora)
+unavailable=$(pactl list sinks | awk '
+  /^[[:space:]]*Name:/ {name=$2}
+  /\[Out\].*not available/ {print name}')
+
+mapfile -t sinks < <(pactl list short sinks | awk '{print $2}' \
+  | grep -vxF -f <(printf "%s\n" "$unavailable" | sed '/^$/d'; echo "__none__"))
 
 get_sink_volume() {
   local sink="$1"
@@ -29,7 +35,7 @@ get_icon_for_nick() {
   local nick="$1"
 
   case "$nick" in
-    *"VG32"*)
+    *"VG32"*|*"C27F398"*)
       echo "🖥️"
       ;;
     *"H848"*|*"Wireless"*|*"Redragon"*)
@@ -49,7 +55,7 @@ get_priority_for_nick() {
   local nick="$1"
 
   case "$nick" in
-    *"VG32"*)
+    *"VG32"*|*"C27F398"*)
       echo 1
       ;;
     *"H848"*|*"Wireless"*|*"Redragon"*)
@@ -93,6 +99,7 @@ sink_to_set=$(printf "%s\n" "$sorted" \
 
 if [[ -n "$sink_to_set" ]]; then
   pactl set-default-sink "$sink_to_set"
+  pactl set-sink-mute "$sink_to_set" 0
 
   for input in $(pactl list short sink-inputs | awk '{print $1}'); do
     pactl move-sink-input "$input" "$sink_to_set"
