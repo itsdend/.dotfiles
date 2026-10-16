@@ -1,10 +1,23 @@
 #!/usr/bin/env bash
 
-# Create a list of workspaces 1–9 with optional icons
-choices=$(printf "1 󰣘\n2 󰣙\n3 \n4 \n5 \n6 󰻀\n7 󰻀\n8 󰻀\n9 󰻀")
+# Icons must match "hyprland/workspaces" format-icons in status/waybar/config
+icons=("" "󰣘" "󰣙" "" "" "" "󰻀" "󰻀" "󰻀" "󰻀")
 
-# Show the menu (choose either rofi or wofi)
-selected=$(echo "$choices" | rofi -dmenu -p "Select Workspace:" | awk '{print $1}')
+active=$(hyprctl activeworkspace -j | jq -r '.id')
+mapfile -t occupied < <(hyprctl workspaces -j | jq -r '.[] | select(.windows > 0) | .id')
+
+choices=""
+for i in {1..9}; do
+  marker=""
+  if [[ "$i" == "$active" ]]; then
+    marker=" ●"
+  elif [[ " ${occupied[*]} " == *" $i "* ]]; then
+    marker=" ○"
+  fi
+  choices+="$i ${icons[$i]}$marker"$'\n'
+done
+
+selected=$(printf "%s" "$choices" | rofi -dmenu -p "Select Workspace:" | awk '{print $1}')
 
 # If selection is not empty, switch to that workspace
 if [[ -n "$selected" ]]; then

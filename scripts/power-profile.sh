@@ -8,11 +8,19 @@ options=(
 )
 
 # Show the menu
-chosen=$(printf "%s\n" "${options[@]}" | rofi -dmenu -i matching fuzzy -p "Power Profile")
+current=$(powerprofilesctl get)
+chosen=$(printf "%s\n" "${options[@]}" | rofi -dmenu -i -matching fuzzy -p "Power Profile ($current)")
 
 # Match and set the corresponding profile
 case "$chosen" in
-  "󱐌  Performance") powerprofilesctl set performance ;;
-  "󰗑  Balanced")    powerprofilesctl set balanced ;;
-  "  Power Saver") powerprofilesctl set power-saver ;;
+  *"Performance") profile=performance ;;
+  *"Balanced") profile=balanced ;;
+  *"Power Saver") profile=power-saver ;;
+  *) exit 0 ;;
 esac
+
+if powerprofilesctl set "$profile"; then
+  notify-send "Power Profile" "Switched to $profile"
+else
+  notify-send -u critical "Power Profile" "Failed to switch to $profile"
+fi

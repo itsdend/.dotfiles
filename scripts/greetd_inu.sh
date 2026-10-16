@@ -29,8 +29,6 @@ while true; do
   row_start=$(( (rows - box_height) / 4 ))
   col_start=$(( (cols - box_width) / 2 ))
 
-
-echo "Running as user: $(whoami)"
   # Draw box
   tput cup $row_start $col_start
   echo -ne "${PURPLE}┌$(printf '─%.0s' $(seq 1 $((box_width - 2))))┐"
@@ -100,6 +98,7 @@ art_start_row=$(( row_start + box_height + 5))
 # Print each line centered horizontally
 for line in "${ascii_art[@]}"; do
   art_col_start=$(( col_start + (box_width - ${#line}) / 2 ))
+  ((art_col_start < 0)) && art_col_start=0
   tput cup $art_start_row $art_col_start
   echo -ne "${CYAN}$line${RESET}"
   ((art_start_row++))
@@ -160,7 +159,6 @@ done
   fi
 
   clear
-  echo  "prosao prvi dio"
   # export XDG_RUNTIME_DIR="/run/user/$(id -u "$USERNAME")"
   # exec sudo -u "$USERNAME" env XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" Hyprland
 
@@ -169,6 +167,9 @@ done
   # exec sudo -u "$USERNAME" login -fp "$USERNAME" -- bash -l -c 'exec Hyprland'
   
   # exec sudo login -p -f "$USERNAME"
-  machinectl shell "$USERNAME@" /etc/profiles/per-user/$USERNAME/bin/Hyprland
+  if ! machinectl shell "$USERNAME@" "/etc/profiles/per-user/$USERNAME/bin/Hyprland"; then
+    echo -e "${RED}Session failed to start, press any key...${RESET}"
+    read -rsn 1
+  fi
   # -- bash -l -c 'exec Hyprland'
 done

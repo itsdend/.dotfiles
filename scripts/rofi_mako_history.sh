@@ -1,26 +1,22 @@
 #!/usr/bin/env bash
 
-selection=$(makoctl history \
-  | awk '
-      /^Notification/ {
-          id=$2
-          sub(":", "", id)
-          summary=$0
-          getline
-          app=$0
-          sub(/^  App name: /, "", app)
-          print id "|" app "|" summary
-      }
-  ' \
-  | rofi -dmenu -p "Notification history"
+history=$(makoctl history -j)
+
+# rofi returns the selected row index (-format i), so no label parsing needed
+index=$(printf "%s" "$history" \
+  | jq -r '.[] | "\(.app_name // "unknown"): \(.summary) \((.body // "") | gsub("\n"; " "))"' \
+  | rofi -dmenu -i -matching fuzzy -format i -p "Notification history"
 )
 
-[ -z "$selection" ] && exit
+[[ -z "$index" || "$index" == -1 ]] && exit
 
-id=$(echo "$selection" | cut -d'|' -f1)
-app=$(echo "$selection" | cut -d'|' -f2)
-summary=$(echo "$selection" | cut -d'|' -f3-)
+app=$(printf "%s" "$history" | jq -r ".[$index].app_name // \"unknown\"")
+summary=$(printf "%s" "$history" | jq -r ".[$index].summary")
+body=$(printf "%s" "$history" | jq -r ".[$index].body // \"\"")
 
-echo "$summary" | wl-copy
+text="$summary"
+[ -n "$body" ] && text+=$'\n'"$body"
 
-rofi -e "App: $app\n\n$summary"
+printf "%s" "$text" | wl-copy
+
+rofi -e "App: $app"$'\n\n'"$text"

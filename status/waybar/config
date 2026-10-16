@@ -4,7 +4,7 @@
 		"margin-top": 10,
 		"height": 30,
 		"modules-left": ["battery", "cpu", "memory"],
-		"modules-center": ["pulseaudio","clock", "custom/notifs", "custom/mic",],
+		"modules-center": ["pulseaudio","clock", "custom/notifs", "custom/mic"],
 		"modules-right": ["custom/kdec", "bluetooth", "network", "hyprland/workspaces"],
 		"cpu": { 
 			"interval": 10, 
@@ -49,6 +49,7 @@
 		"custom/mic": {
 			"return-type":"json",
 			"exec": "mic",
+			"interval": 5,
 			"exec-on-event": true,
 			"format": " {}",
 			"on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle &&  pkill -RTMIN+8 waybar",
@@ -66,6 +67,7 @@
 		"custom/notifs": {
 			"return-type":"json",
 			"exec": "waybar-mako",
+			"interval": 5,
 			"exec-on-event": true,
 			"format": " {}",
 			"on-click": "toggle-mako &&  pkill -RTMIN+8 waybar",

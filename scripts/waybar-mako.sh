@@ -3,5 +3,5 @@
 if makoctl mode | grep -q "do-not-disturb"; then
     echo '{"text":"󰂛 ", "class":"dnd"}'
 else
-    echo '{"text":"󰂚 ", "class":"dnd"}'
+    echo '{"text":"󰂚 ", "class":"normal"}'
 fi

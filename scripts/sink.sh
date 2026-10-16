@@ -1,34 +1,20 @@
 #!/usr/bin/env bash
 
-# sinkovi čiji je port "not available" (npr. HDMI izlazi bez spojenog monitora)
-unavailable=$(pactl list sinks | awk '
-  /^[[:space:]]*Name:/ {name=$2}
-  /\[Out\].*not available/ {print name}')
-
-mapfile -t sinks < <(pactl list short sinks | awk '{print $2}' \
-  | grep -vxF -f <(printf "%s\n" "$unavailable" | sed '/^$/d'; echo "__none__"))
-
-get_sink_volume() {
-  local sink="$1"
-  pactl list sinks | awk -v s="$sink" '
-    $0 ~ "Name: "s {found=1}
-    found && /Volume:/ {
-      print $0
-      found=0
-    }' | sed -E 's/.* ([0-9]+)%.*$/\1%/'
-}
-
-
-get_sink_nick() {
-  local sink="$1"
-  pactl list sinks | awk -v s="$sink" '
-    $0 ~ "Name: "s {found=1}
-    found && /node.nick =/ {
-      gsub(/.*= "/, "")
-      gsub(/"/, "")
-      print
-      found=0
-    }'
+# One pass over `pactl list sinks` → "name<TAB>nick<TAB>volume<TAB>mute" per usable sink.
+# Sinks whose port is "not available" (e.g. HDMI outputs without a monitor) are skipped.
+list_sinks() {
+  pactl list sinks | awk '
+    function flush() {
+      if (name != "" && !unavailable) print name "\t" nick "\t" vol "\t" mute
+      name = ""; nick = ""; vol = ""; mute = ""; unavailable = 0
+    }
+    /^Sink #/ { flush() }
+    /^[[:space:]]*Name:/ { name = $2 }
+    /^[[:space:]]*Mute:/ { mute = $2 }
+    /^[[:space:]]*Volume:/ && vol == "" { match($0, /[0-9]+%/); vol = substr($0, RSTART, RLENGTH) }
+    /node.nick =/ { nick = $0; sub(/.*= "/, "", nick); sub(/"$/, "", nick) }
+    /\[Out\].*not available/ { unavailable = 1 }
+    END { flush() }'
 }
 
 get_icon_for_nick() {
@@ -71,31 +57,29 @@ get_priority_for_nick() {
 }
 
 
-
 options=()
 
-for sink in "${sinks[@]}"; do
-  nick=$(get_sink_nick "$sink")
-  vol=$(get_sink_volume "$sink")
-
+while IFS=$'\t' read -r sink nick vol mute; do
   label="${nick:-$sink}"
   icon=$(get_icon_for_nick "$label")
   priority=$(get_priority_for_nick "$label")
+  [[ "$mute" == "yes" ]] && vol="$vol, muted"
 
   # prepend priority for sorting
-  options+=("$priority|$icon  $label ($vol)|$sink")
-done
+  options+=("$priority"$'\t'"$sink"$'\t'"$icon  $label ($vol)")
+done < <(list_sinks)
 
 # sort by priority (numeric)
-sorted=$(printf "%s\n" "${options[@]}" | sort -t'|' -k1,1n)
+mapfile -t sorted < <(printf "%s\n" "${options[@]}" | sort -t$'\t' -k1,1n)
 
-chosen_label=$(printf "%s\n" "$sorted" \
-  | cut -d '|' -f2 \
-  | rofi -dmenu -i -matching fuzzy -p "Audio Output")
+# rofi returns the selected row index (-format i), so labels never need parsing
+index=$(printf "%s\n" "${sorted[@]}" \
+  | cut -f3 \
+  | rofi -dmenu -i -matching fuzzy -format i -p "Audio Output")
 
-sink_to_set=$(printf "%s\n" "$sorted" \
-  | grep "|$chosen_label|" \
-  | cut -d '|' -f3)
+[[ -z "$index" || "$index" == -1 ]] && exit 0
+
+sink_to_set=$(printf "%s" "${sorted[$index]}" | cut -f2)
 
 if [[ -n "$sink_to_set" ]]; then
   pactl set-default-sink "$sink_to_set"
