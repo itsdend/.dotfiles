@@ -86,7 +86,7 @@
 		# beam28Packages.erlang
 		# beam28Packages.rebar3
 		python313Packages.python-lsp-server
-        claude-code
+        nixpkgsUnstable.claude-code
 
 		# hyprstuff
 		hyprpaper
