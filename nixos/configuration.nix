@@ -122,6 +122,7 @@
 		lazygit
 		ripgrep
 		fzf
+		tree-sitter			# CLI for nvim-treesitter parser builds
 
 		# editors
 		vim
