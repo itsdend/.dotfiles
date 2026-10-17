@@ -18,7 +18,10 @@
         alsa-utils
 
 		# browsers
-		nixpkgsUnstable.vivaldi
+		(nixpkgsUnstable.vivaldi.override {
+			proprietaryCodecs = true;
+			enableWidevine = true;
+		})
 
 		# messages
 		nixpkgsUnstable.signal-desktop
